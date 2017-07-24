@@ -37,16 +37,6 @@ Plug 'tpope/vim-rsi'
 
 " Motions
 Plug 'jeetsukumaran/vim-indentwise'
-" [- PreviousLesserIndent
-" [= PreviousEqualIndent
-" [+ PreviousGreaterIndent
-" ]- NextLesserIndent
-" ]= NextEqualIndent
-" ]+ NextGreaterIndent
-" [_ PreviousAbsoluteIndent
-" ]_ NextAbsoluteIndent
-" [% BlockScopeBoundaryBegin
-" ]% BlockScopeBoundaryEnd
 " 
 " Text formatting
 Plug 'tpope/vim-surround'
