@@ -92,16 +92,11 @@ set incsearch
 set ignorecase
 set smartcase
 
-" Keep swapfiles out of project
-set backupdir=~/.vim/backup//
-set directory=~/.vim/swp//
-
 " define tab and newline chars with set list
 set listchars=tab:▸\ ,eol:¬
 
 " Keep undo history
 set undofile
-set undodir=~/.config/.vim/undodir
 
 " Keep cursor away from edges of screen
 set scrolloff=5
