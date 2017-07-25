@@ -29,7 +29,7 @@ Plug 'tpope/vim-markdown', { 'for': 'markdown' }
 Plug 'tyrannicaltoucan/vim-deep-space'
 
 " Grep
-Plug 'mhinz/vim-grepper'
+Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] }
 
 " Keymappings
 Plug 'tpope/vim-unimpaired'
@@ -71,6 +71,9 @@ autocmd FileType ruby let b:vcm_tab_complete = "omni"
 " Autocommands
 autocmd FileType markdown,text :set linebreak
 
+" Enable backgrounding of unsaved buffers
+set hidden
+
 " Enable mouse
 set mouse=a
 
@@ -82,7 +85,7 @@ set incsearch
 set ignorecase
 set smartcase
 
-" define tab and newline chars with set list
+" Define tab and newline chars with set list
 set listchars=tab:▸\ ,eol:¬
 
 " Keep undo history
@@ -100,11 +103,34 @@ set number
 " 24-bit color
 set termguicolors
 
-" Keyboard mappings
+
+" =========
+" Functions
+" =========
+
+" Split line
+function! BreakHere()
+    s/^\(\s*\)\(.\{-}\)\(\s*\)\(\%#\)\(\s*\)\(.*\)/\1\2\r\1\4\6
+    call histdel("/", -1)
+endfunction
+
+
+" ========
+" Key maps
+" ========
+
+" Leader
 nnoremap <leader>f :Files<CR>
 nnoremap <leader>g :GFiles<CR>
 nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>r :e ~/.config/nvim/init.vim<CR>
 
+" Overrides
+nnoremap S :call BreakHere()<CR>
+
+
+" ===========
 " Colorscheme
+" ===========
+
 colorscheme deep-space
