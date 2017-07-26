@@ -68,8 +68,14 @@ autocmd FileType ruby let b:vcm_tab_complete = "omni"
 " Vim settings
 " ============
 
-" Autocommands
+" Break on whitespace for prose
 autocmd FileType markdown,text :set linebreak
+
+" Automatically resize splits when host window is resized
+augroup Misc
+  autocmd!
+  autocmd VimResized * exe "normal! \<c-w>="
+augroup END
 
 " Enable backgrounding of unsaved buffers
 set hidden
@@ -103,6 +109,16 @@ set number
 " 24-bit color
 set termguicolors
 
+" No vertical divider char
+set fillchars+=vert:\ 
+
+" Open splits below and vertical splits to the right
+set splitbelow
+set splitright
+
+" define tab and newline chars with set list
+set listchars=tab:▸\ ,eol:¬
+
 
 " =========
 " Functions
@@ -110,8 +126,8 @@ set termguicolors
 
 " Split line
 function! BreakHere()
-    s/^\(\s*\)\(.\{-}\)\(\s*\)\(\%#\)\(\s*\)\(.*\)/\1\2\r\1\4\6
-    call histdel("/", -1)
+	s/^\(\s*\)\(.\{-}\)\(\s*\)\(\%#\)\(\s*\)\(.*\)/\1\2\r\1\4\6
+	call histdel("/", -1)
 endfunction
 
 
