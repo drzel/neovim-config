@@ -1,3 +1,13 @@
+" =================================
+" Sheldon Johnson's vim init.vim
+" =================================
+
+" - Install vim-plug
+" - Install patched font or delete vim-devicons plugin
+" - Source file
+" - :PlugInstall
+" - Restart vim
+
 " =======
 " Plugins
 " =======
