@@ -27,7 +27,7 @@ Plug 'junegunn/vim-easy-align'
 Plug 'tpope/vim-markdown', { 'for': 'markdown' }
 
 " Colorschemes
-Plug 'tyrannicaltoucan/vim-deep-space'
+Plug 'arcticicestudio/nord-vim'
 
 " Grep
 Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] }
@@ -123,7 +123,7 @@ set fillchars+=vert:\
 set splitbelow
 set splitright
 
-" define tab and newline chars with set list
+" Define tab and newline chars with set list
 set listchars=tab:▸\ ,eol:¬
 
 
@@ -159,4 +159,5 @@ nnoremap S :call BreakHere()<CR>
 " Colorscheme
 " ===========
 
-colorscheme deep-space
+let g:nord_italic_comments = 1
+colorscheme nord
