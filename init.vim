@@ -67,6 +67,9 @@ autocmd FileType ruby let b:vcm_tab_complete = "omni"
 " dirvish
 autocmd FileType dirvish sort r /[^\/]$/ " Put directories before files
 
+" git-gutter
+let g:gitgutter_realtime = 0
+let g:gitgutter_eager = 0
 
 " ============
 " Vim settings
