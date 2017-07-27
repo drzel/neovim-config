@@ -8,6 +8,7 @@ Plug 'tpope/vim-repeat'
 
 " Git
 Plug 'tpope/vim-git'
+Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 
 " Ruby
@@ -63,6 +64,9 @@ call plug#end()
 " VimCompletesMe
 autocmd FileType ruby let b:vcm_tab_complete = "omni"
 
+" dirvish
+autocmd FileType dirvish sort r /[^\/]$/ " Put directories before files
+
 
 " ============
 " Vim settings
@@ -73,8 +77,8 @@ autocmd FileType markdown,text :set linebreak
 
 " Automatically resize splits when host window is resized
 augroup Misc
-  autocmd!
-  autocmd VimResized * exe "normal! \<c-w>="
+	autocmd!
+	autocmd VimResized * exe "normal! \<c-w>="
 augroup END
 
 " Enable backgrounding of unsaved buffers
@@ -135,11 +139,14 @@ endfunction
 " Key maps
 " ========
 
-" Leader
+" Vim
+nnoremap <leader>r :e ~/.config/nvim/init.vim<CR>
+
+" Plugins
 nnoremap <leader>f :Files<CR>
 nnoremap <leader>g :GFiles<CR>
 nnoremap <leader>b :Buffers<CR>
-nnoremap <leader>r :e ~/.config/nvim/init.vim<CR>
+nnoremap <leader>a :Grepper<CR>
 
 " Overrides
 nnoremap S :call BreakHere()<CR>
