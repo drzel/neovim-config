@@ -6,6 +6,9 @@ call plug#begin('~/.local/share/nvim/plugged')
 " Utilities
 Plug 'tpope/vim-repeat'
 
+" Status line
+Plug 'vim-airline/vim-airline'
+
 " Git
 Plug 'tpope/vim-git'
 Plug 'airblade/vim-gitgutter'
@@ -38,7 +41,7 @@ Plug 'tpope/vim-rsi'
 
 " Motions
 Plug 'jeetsukumaran/vim-indentwise'
-" 
+
 " Text formatting
 Plug 'tpope/vim-surround'
 
@@ -54,12 +57,19 @@ Plug 'junegunn/fzf.vim'
 " Tags
 Plug 'ludovicchabant/vim-gutentags'
 
+" Dev icons (load last)
+Plug 'ryanoasis/vim-devicons'
+
 call plug#end()
 
 
 " ===============
 " Plugin settings
 " ===============
+
+" Airline
+let g:airline_extensions = []
+set noshowmode
 
 " VimCompletesMe
 autocmd FileType ruby let b:vcm_tab_complete = "omni"
