@@ -29,6 +29,7 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rake'
 Plug 'tpope/vim-bundler'
+Plug 'tpope/vim-projectionist'
 
 " TabComplete
 Plug 'ajh17/VimCompletesMe'
