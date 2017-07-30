@@ -3,8 +3,9 @@
 " =================================
 
 " - Install vim-plug
-" - Install patched font or delete vim-devicons plugin
-" - Source file
+" - Install nerd-icons patched font
+" - Install rubocop gem
+" - Source this file 
 " - :PlugInstall
 " - Restart vim
 
@@ -30,6 +31,12 @@ Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rake'
 Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-projectionist'
+Plug 'ngmy/vim-rubocop'
+
+" Linting
+if has("nvim")
+	Plug 'neomake/neomake'
+endif
 
 " TabComplete
 Plug 'ajh17/VimCompletesMe'
@@ -91,6 +98,14 @@ autocmd FileType dirvish sort r /[^\/]$/ " Put directories before files
 " git-gutter
 let g:gitgutter_realtime = 0
 let g:gitgutter_eager = 0
+
+" rubocop
+let g:vimrubocop_keymap = 0
+
+" neomake
+if has("nvim")
+	autocmd! BufWritePost * Neomake
+endif
 
 " ============
 " Vim settings
