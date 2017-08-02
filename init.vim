@@ -30,6 +30,7 @@ Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rake'
 Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-projectionist'
+Plug 'tpope/vim-endwise'
 
 " TabComplete
 Plug 'ajh17/VimCompletesMe'
