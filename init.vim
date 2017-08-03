@@ -1,12 +1,13 @@
-" =================================
-" Sheldon Johnson's vim init.vim
-" =================================
+" ========================
+" Sheldon Johnson's .vimrc
+" ========================
 
 " - Install vim-plug
 " - Install patched font or delete vim-devicons plugin
 " - Source file
 " - :PlugInstall
 " - Restart vim
+
 
 " =======
 " Plugins
@@ -16,13 +17,16 @@ call plug#begin('~/.local/share/nvim/plugged')
 " Utilities
 Plug 'tpope/vim-repeat'
 
+" Unix
+Plug 'tpope/vim-eunuch'
+
 " Status line
 Plug 'vim-airline/vim-airline'
 
 " Git
 Plug 'tpope/vim-git'
-Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
 
 " Ruby
 Plug 'vim-ruby/vim-ruby'
@@ -87,11 +91,13 @@ set noshowmode
 autocmd FileType ruby let b:vcm_tab_complete = "omni"
 
 " dirvish
-autocmd FileType dirvish sort r /[^\/]$/ " Put directories before files
+autocmd FileType dirvish sort r /[^\/]$/          " Put directories before files
+autocmd FileType dirvish call fugitive#detect(@%) " Enable fugitive's :Gstatus
 
 " git-gutter
 let g:gitgutter_realtime = 0
 let g:gitgutter_eager = 0
+
 
 " ============
 " Vim settings
@@ -167,16 +173,32 @@ endfunction
 " Key maps
 " ========
 
-" Vim
+" Open ~/.config/nvim/init.vim
 nnoremap <leader>r :e ~/.config/nvim/init.vim<CR>
 
-" Plugins
+
+" ===============
+" Plugin Key Maps
+" ===============
+
+" FZF
 nnoremap <leader>f :Files<CR>
 nnoremap <leader>g :GFiles<CR>
 nnoremap <leader>b :Buffers<CR>
+
+" vim-grepper
 nnoremap <leader>a :Grepper<CR>
 
-" Overrides
+" vim-easy-align
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
+
+
+" ===================
+" Overriding key maps
+" ===================
+
+" Split line at cursor
 nnoremap S :call BreakHere()<CR>
 
 
@@ -184,5 +206,7 @@ nnoremap S :call BreakHere()<CR>
 " Colorscheme
 " ===========
 
+" Nord
 let g:nord_italic_comments = 1
+
 colorscheme nord
