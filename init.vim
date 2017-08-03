@@ -132,6 +132,9 @@ set scrolloff=5
 " Only insert the common text of all autocomplete matches
 set completeopt+=longest
 
+" Don't autocomment next line
+set formatoptions-=cro
+
 " Show line numbers
 set number
 
