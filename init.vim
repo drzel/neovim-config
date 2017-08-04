@@ -1,9 +1,13 @@
 " ========================
+"
 " Sheldon Johnson's .vimrc
 " ========================
 
+" - Some plugins have extra steps:
+"   - vim-devicons: Install patched font from nerd-fonts
+"   - deoplete.nvim: Install rcodetools
+"   - vim-gutentags: Install universal-ctags
 " - Install vim-plug
-" - Install patched font or delete vim-devicons plugin
 " - Source file
 " - :PlugInstall
 " - Restart vim
@@ -38,6 +42,8 @@ Plug 'tpope/vim-endwise'
 
 " TabComplete
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'fishbullet/deoplete-ruby'
+Plug 'Shougo/deoplete-rct'
 
 " Alignment
 Plug 'junegunn/vim-easy-align'
@@ -83,18 +89,29 @@ call plug#end()
 " Plugin settings
 " ===============
 
-" Airline
+" vim-airline
 let g:airline_extensions = []
 set noshowmode
 
 " deoplete.nvim
 let g:deoplete#enable_at_startup = 1
 
-" dirvish
+let g:deoplete#omni#input_patterns = {}
+let g:deoplete#omni#input_patterns.ruby = ['[^. *\t]\.\w*', '[a-zA-Z_]\w*::']
+
+let g:deoplete#omni#functions = {}
+let g:deoplete#omni#functions.ruby = 'rubycomplete#Complete'
+
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function() abort
+	return deoplete#close_popup() . "\<CR>"
+endfunction
+
+" vim-dirvish
 autocmd FileType dirvish sort r /[^\/]$/          " Put directories before files
 autocmd FileType dirvish call fugitive#detect(@%) " Enable fugitive's :Gstatus
 
-" git-gutter
+" vim-gitgutter
 let g:gitgutter_realtime = 0
 let g:gitgutter_eager = 0
 
@@ -139,7 +156,7 @@ set scrolloff=5
 " set completeopt+=longest
 
 " Don't autocomment next line
-set formatoptions-=cro
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 " Show line numbers
 set number
