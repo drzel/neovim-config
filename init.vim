@@ -32,12 +32,12 @@ Plug 'airblade/vim-gitgutter'
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rake'
-Plug 'tpope/vim-bundler'
+" Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-endwise'
 
 " TabComplete
-Plug 'ajh17/VimCompletesMe'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 " Alignment
 Plug 'junegunn/vim-easy-align'
@@ -87,8 +87,8 @@ call plug#end()
 let g:airline_extensions = []
 set noshowmode
 
-" VimCompletesMe
-autocmd FileType ruby let b:vcm_tab_complete = "omni"
+" deoplete.nvim
+let g:deoplete#enable_at_startup = 1
 
 " dirvish
 autocmd FileType dirvish sort r /[^\/]$/          " Put directories before files
@@ -136,7 +136,7 @@ set undofile
 set scrolloff=5
 
 " Only insert the common text of all autocomplete matches
-set completeopt+=longest
+" set completeopt+=longest
 
 " Don't autocomment next line
 set formatoptions-=cro
