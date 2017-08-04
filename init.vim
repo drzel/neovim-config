@@ -1,29 +1,38 @@
-" =================================
-" Sheldon Johnson's vim init.vim
-" =================================
+" ===============================
+" Sheldon Johnson's neovim config
+" ===============================
 
+" - Some plugins have extra steps:
+"   - vim-devicons: Install patched font from nerd-fonts
+"   - deoplete.nvim: Install rcodetools gem
+"   - vim-gutentags: Install universal-ctags
 " - Install vim-plug
-" - Install nerd-icons patched font
-" - Install rubocop gem
-" - Source this file 
+" - Source file
 " - :PlugInstall
 " - Restart vim
+
 
 " =======
 " Plugins
 " =======
 
 call plug#begin('~/.local/share/nvim/plugged')
+
+if has('nvim')
+  " Autocomplete
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  Plug 'fishbullet/deoplete-ruby'
+  Plug 'Shougo/deoplete-rct'
+
+  " Linting
+  Plug 'neomake/neomake'
+endif
+
 " Utilities
 Plug 'tpope/vim-repeat'
 
-" Status line
-Plug 'vim-airline/vim-airline'
-
-" Git
-Plug 'tpope/vim-git'
-Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-fugitive'
+" Unix
+Plug 'tpope/vim-eunuch'
 
 " Ruby
 Plug 'vim-ruby/vim-ruby'
@@ -33,13 +42,20 @@ Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-projectionist'
 Plug 'ngmy/vim-rubocop'
 
-" Linting
-if has("nvim")
-	Plug 'neomake/neomake'
-endif
+" Status line
+Plug 'vim-airline/vim-airline'
 
-" TabComplete
-Plug 'ajh17/VimCompletesMe'
+" Git
+Plug 'tpope/vim-git'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+
+" Ruby
+Plug 'vim-ruby/vim-ruby'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-rake'
+Plug 'tpope/vim-projectionist'
+Plug 'tpope/vim-endwise'
 
 " Alignment
 Plug 'junegunn/vim-easy-align'
@@ -85,27 +101,40 @@ call plug#end()
 " Plugin settings
 " ===============
 
-" Airline
+" vim-airline
 let g:airline_extensions = []
 set noshowmode
-
-" VimCompletesMe
-autocmd FileType ruby let b:vcm_tab_complete = "omni"
-
-" dirvish
-autocmd FileType dirvish sort r /[^\/]$/ " Put directories before files
-
-" git-gutter
-let g:gitgutter_realtime = 0
-let g:gitgutter_eager = 0
 
 " rubocop
 let g:vimrubocop_keymap = 0
 
-" neomake
-if has("nvim")
-	autocmd! BufWritePost * Neomake
+if has('nvim')
+  " deoplete.nvim
+  let g:deoplete#enable_at_startup = 1
+
+  let g:deoplete#omni#input_patterns = {}
+  let g:deoplete#omni#input_patterns.ruby = ['[^. *\t]\.\w*', '[a-zA-Z_]\w*::']
+
+  let g:deoplete#omni#functions = {}
+  let g:deoplete#omni#functions.ruby = 'rubycomplete#Complete'
+
+  inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+  function! s:my_cr_function() abort
+    return deoplete#close_popup() . "\<CR>"
+  endfunction
+
+  " neomake
+  autocmd! BufWritePost * Neomake
 endif
+
+" vim-dirvish
+let g:dirvish_mode = ':sort ,^.*[\/],'
+autocmd FileType dirvish call fugitive#detect(@%) " Enable fugitive's :Gstatus
+
+" vim-gitgutter
+let g:gitgutter_realtime = 0
+let g:gitgutter_eager = 0
+
 
 " ============
 " Vim settings
@@ -116,8 +145,8 @@ autocmd FileType markdown,text :set linebreak
 
 " Automatically resize splits when host window is resized
 augroup Misc
-	autocmd!
-	autocmd VimResized * exe "normal! \<c-w>="
+  autocmd!
+  autocmd VimResized * exe "normal! \<c-w>="
 augroup END
 
 " Enable backgrounding of unsaved buffers
@@ -143,8 +172,8 @@ set undofile
 " Keep cursor away from edges of screen
 set scrolloff=5
 
-" Only insert the common text of all autocomplete matches
-set completeopt+=longest
+" Don't autocomment next line
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 " Show line numbers
 set number
@@ -162,6 +191,11 @@ set splitright
 " Define tab and newline chars with set list
 set listchars=tab:▸\ ,eol:¬
 
+" Two space indent
+set shiftwidth=2
+let &softtabstop = &shiftwidth
+set expandtab
+
 
 " =========
 " Functions
@@ -169,8 +203,8 @@ set listchars=tab:▸\ ,eol:¬
 
 " Split line
 function! BreakHere()
-	s/^\(\s*\)\(.\{-}\)\(\s*\)\(\%#\)\(\s*\)\(.*\)/\1\2\r\1\4\6
-	call histdel("/", -1)
+  s/^\(\s*\)\(.\{-}\)\(\s*\)\(\%#\)\(\s*\)\(.*\)/\1\2\r\1\4\6
+  call histdel("/", -1)
 endfunction
 
 
@@ -178,16 +212,32 @@ endfunction
 " Key maps
 " ========
 
-" Vim
+" Open ~/.config/nvim/init.vim
 nnoremap <leader>r :e ~/.config/nvim/init.vim<CR>
 
-" Plugins
+
+" ===============
+" Plugin Key Maps
+" ===============
+
+" fzf
 nnoremap <leader>f :Files<CR>
 nnoremap <leader>g :GFiles<CR>
 nnoremap <leader>b :Buffers<CR>
+
+" vim-grepper
 nnoremap <leader>a :Grepper<CR>
 
-" Overrides
+" vim-easy-align
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
+
+
+" ===================
+" Overriding Key Maps
+" ===================
+
+" Split line at cursor
 nnoremap S :call BreakHere()<CR>
 
 
@@ -195,5 +245,7 @@ nnoremap S :call BreakHere()<CR>
 " Colorscheme
 " ===========
 
+" Nord
 let g:nord_italic_comments = 1
+
 colorscheme nord
