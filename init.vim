@@ -105,7 +105,7 @@ call plug#end()
 let g:airline_extensions = []
 set noshowmode
 
-" rubocop
+" vim-rubocop
 let g:vimrubocop_keymap = 0
 
 if has('nvim')
