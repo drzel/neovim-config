@@ -1,11 +1,10 @@
-" ========================
-"
-" Sheldon Johnson's .vimrc
-" ========================
+" ===============================
+" Sheldon Johnson's neovim config
+" ===============================
 
 " - Some plugins have extra steps:
 "   - vim-devicons: Install patched font from nerd-fonts
-"   - deoplete.nvim: Install rcodetools
+"   - deoplete.nvim: Install rcodetools gem
 "   - vim-gutentags: Install universal-ctags
 " - Install vim-plug
 " - Source file
@@ -36,14 +35,15 @@ Plug 'airblade/vim-gitgutter'
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rake'
-" Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-endwise'
 
 " TabComplete
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'fishbullet/deoplete-ruby'
-Plug 'Shougo/deoplete-rct'
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  Plug 'fishbullet/deoplete-ruby'
+  Plug 'Shougo/deoplete-rct'
+endif
 
 " Alignment
 Plug 'junegunn/vim-easy-align'
@@ -94,21 +94,23 @@ let g:airline_extensions = []
 set noshowmode
 
 " deoplete.nvim
-let g:deoplete#enable_at_startup = 1
+if has('nvim')
+  let g:deoplete#enable_at_startup = 1
 
-let g:deoplete#omni#input_patterns = {}
-let g:deoplete#omni#input_patterns.ruby = ['[^. *\t]\.\w*', '[a-zA-Z_]\w*::']
+  let g:deoplete#omni#input_patterns = {}
+  let g:deoplete#omni#input_patterns.ruby = ['[^. *\t]\.\w*', '[a-zA-Z_]\w*::']
 
-let g:deoplete#omni#functions = {}
-let g:deoplete#omni#functions.ruby = 'rubycomplete#Complete'
+  let g:deoplete#omni#functions = {}
+  let g:deoplete#omni#functions.ruby = 'rubycomplete#Complete'
 
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function() abort
-	return deoplete#close_popup() . "\<CR>"
-endfunction
+  inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+  function! s:my_cr_function() abort
+    return deoplete#close_popup() . "\<CR>"
+  endfunction
+endif
 
 " vim-dirvish
-autocmd FileType dirvish sort r /[^\/]$/          " Put directories before files
+let g:dirvish_mode = ':sort ,^.*[\/],'
 autocmd FileType dirvish call fugitive#detect(@%) " Enable fugitive's :Gstatus
 
 " vim-gitgutter
@@ -125,8 +127,8 @@ autocmd FileType markdown,text :set linebreak
 
 " Automatically resize splits when host window is resized
 augroup Misc
-	autocmd!
-	autocmd VimResized * exe "normal! \<c-w>="
+  autocmd!
+  autocmd VimResized * exe "normal! \<c-w>="
 augroup END
 
 " Enable backgrounding of unsaved buffers
@@ -152,9 +154,6 @@ set undofile
 " Keep cursor away from edges of screen
 set scrolloff=5
 
-" Only insert the common text of all autocomplete matches
-" set completeopt+=longest
-
 " Don't autocomment next line
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
@@ -174,6 +173,11 @@ set splitright
 " Define tab and newline chars with set list
 set listchars=tab:▸\ ,eol:¬
 
+" Two space indent
+set shiftwidth=2
+let &softtabstop = &shiftwidth
+set expandtab
+
 
 " =========
 " Functions
@@ -181,8 +185,8 @@ set listchars=tab:▸\ ,eol:¬
 
 " Split line
 function! BreakHere()
-	s/^\(\s*\)\(.\{-}\)\(\s*\)\(\%#\)\(\s*\)\(.*\)/\1\2\r\1\4\6
-	call histdel("/", -1)
+  s/^\(\s*\)\(.\{-}\)\(\s*\)\(\%#\)\(\s*\)\(.*\)/\1\2\r\1\4\6
+  call histdel("/", -1)
 endfunction
 
 
@@ -198,7 +202,7 @@ nnoremap <leader>r :e ~/.config/nvim/init.vim<CR>
 " Plugin Key Maps
 " ===============
 
-" FZF
+" fzf
 nnoremap <leader>f :Files<CR>
 nnoremap <leader>g :GFiles<CR>
 nnoremap <leader>b :Buffers<CR>
