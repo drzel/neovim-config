@@ -212,8 +212,8 @@ endfunction
 " Key maps
 " ========
 
-" Open ~/.config/nvim/init.vim
-nnoremap <leader>r :e ~/.config/nvim/init.vim<CR>
+" Edit vimrc
+nnoremap <leader>r :edit $MYVIMRC<CR>
 
 
 " ===============
