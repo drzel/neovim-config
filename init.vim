@@ -1,16 +1,13 @@
-" ===============================
-" Sheldon Johnson's neovim config
-" ===============================
+" =======================
+" ~/.config/nvim/init.vim
+" =======================
 
-" - Install vim-plug
-" - Some plugins have extra steps:
-"   - vim-devicons: Install patched font from nerd-fonts
-"   - deoplete.nvim: Install rcodetools gem
-"   - vim-gutentags: Install universal-ctags
-" - Source file
+" - Install vim-plug (Use :CheckHealth to ensure dependencies installed)
+" - For vim-devicons, set terminal font to patched font from nerd-fonts repo
+" - For vim-gutentags, install universal-ctags
+" - Source this file
 " - :PlugInstall
 " - Restart vim
-
 
 " =======
 " Plugins
@@ -22,25 +19,33 @@ if has('nvim')
   " Autocomplete
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   Plug 'fishbullet/deoplete-ruby'
-  Plug 'Shougo/deoplete-rct'
+  Plug 'Shougo/deoplete-rct', { 'do': 'gem install rcodetools' }
 
   " Linting
   Plug 'neomake/neomake'
 endif
 
+" Keymappings
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-rsi'
+
 " Utilities
 Plug 'tpope/vim-repeat'
+
+" Grep
+Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] }
 
 " Unix
 Plug 'tpope/vim-eunuch'
 
 " Ruby
 Plug 'vim-ruby/vim-ruby'
-Plug 'tpope/vim-rails'
-Plug 'tpope/vim-rake'
-Plug 'tpope/vim-bundler'
+Plug 'tpope/vim-rails', { 'do': 'gem install rails' }
+Plug 'tpope/vim-rake', { 'do': 'gem install rake' }
+Plug 'tpope/vim-bundler', { 'do': 'gem install bundler' }
+Plug 'ngmy/vim-rubocop', { 'do': 'gem install rubocop' }
 Plug 'tpope/vim-projectionist'
-Plug 'ngmy/vim-rubocop'
+Plug 'tpope/vim-endwise'
 
 " Status line
 Plug 'vim-airline/vim-airline'
@@ -50,28 +55,14 @@ Plug 'tpope/vim-git'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
-" Ruby
-Plug 'vim-ruby/vim-ruby'
-Plug 'tpope/vim-rails'
-Plug 'tpope/vim-rake'
-Plug 'tpope/vim-projectionist'
-Plug 'tpope/vim-endwise'
-
 " Alignment
 Plug 'junegunn/vim-easy-align'
 
 " Markdown
-Plug 'tpope/vim-markdown', { 'for': 'markdown' }
+Plug 'tpope/vim-markdown'
 
 " Colorschemes
 Plug 'arcticicestudio/nord-vim'
-
-" Grep
-Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] }
-
-" Keymappings
-Plug 'tpope/vim-unimpaired'
-Plug 'tpope/vim-rsi'
 
 " Motions
 Plug 'jeetsukumaran/vim-indentwise'
@@ -90,6 +81,9 @@ Plug 'junegunn/fzf.vim'
 
 " Tags
 Plug 'ludovicchabant/vim-gutentags'
+
+" Cosmetic
+Plug 'blueyed/vim-diminactive'
 
 " Dev icons (load last)
 Plug 'ryanoasis/vim-devicons'
@@ -134,6 +128,10 @@ autocmd FileType dirvish call fugitive#detect(@%) " Enable fugitive's :Gstatus
 " vim-gitgutter
 let g:gitgutter_realtime = 0
 let g:gitgutter_eager = 0
+
+" vim-diminactive
+" let g:diminactive_use_colorcolumn = 0
+" let g:diminactive_use_syntax = 1
 
 
 " ============
