@@ -2,11 +2,11 @@
 " Sheldon Johnson's neovim config
 " ===============================
 
+" - Install vim-plug
 " - Some plugins have extra steps:
 "   - vim-devicons: Install patched font from nerd-fonts
 "   - deoplete.nvim: Install rcodetools gem
 "   - vim-gutentags: Install universal-ctags
-" - Install vim-plug
 " - Source file
 " - :PlugInstall
 " - Restart vim
