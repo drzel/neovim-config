@@ -5,7 +5,6 @@
 " - Install vim-plug (Use :CheckHealth to ensure dependencies installed)
 " - For vim-devicons, set terminal font to patched font from nerd-fonts repo
 " - For vim-gutentags, install universal-ctags
-" - Source this file
 " - :PlugInstall
 " - Restart vim
 
@@ -82,9 +81,6 @@ Plug 'junegunn/fzf.vim'
 " Tags
 Plug 'ludovicchabant/vim-gutentags'
 
-" Cosmetic
-Plug 'blueyed/vim-diminactive'
-
 " Dev icons (load last)
 Plug 'ryanoasis/vim-devicons'
 
@@ -138,8 +134,11 @@ let g:gitgutter_eager = 0
 " Vim settings
 " ============
 
+" Don't wrap text by default
+set nowrap
+
 " Break on whitespace for prose
-autocmd FileType markdown,text :set linebreak
+autocmd FileType markdown,text :set linebreak wrap
 
 " Automatically resize splits when host window is resized
 augroup Misc
@@ -157,6 +156,7 @@ set mouse=a
 set cursorline
 
 " Search not case-sensitive when only lower-case chars used
+set nohlsearch
 set incsearch
 set ignorecase
 set smartcase
