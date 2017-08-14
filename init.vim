@@ -218,6 +218,9 @@ nnoremap <leader>r :edit $MYVIMRC<CR>
 " Plugin Key Maps
 " ===============
 
+" vim-unimpaired
+" see :help unimpaired
+
 " fzf
 nnoremap <leader>f :Files<CR>
 nnoremap <leader>g :GFiles<CR>
