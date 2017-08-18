@@ -46,6 +46,9 @@ Plug 'ngmy/vim-rubocop', { 'do': 'gem install rubocop' }
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-endwise'
 
+" CSV
+Plug 'chrisbra/csv.vim'
+
 " Status line
 Plug 'vim-airline/vim-airline'
 
@@ -125,9 +128,8 @@ autocmd FileType dirvish call fugitive#detect(@%) " Enable fugitive's :Gstatus
 let g:gitgutter_realtime = 0
 let g:gitgutter_eager = 0
 
-" vim-diminactive
-" let g:diminactive_use_colorcolumn = 0
-" let g:diminactive_use_syntax = 1
+" vim-csv
+let g:csv_autocmd_arrange = 1
 
 
 " ============
