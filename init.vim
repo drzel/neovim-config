@@ -2,9 +2,9 @@
 " ~/.config/nvim/init.vim
 " =======================
 
+" - Dependencies: git, ruby, universal-ctags
 " - Install vim-plug (Use :CheckHealth to ensure dependencies installed)
 " - For vim-devicons, set terminal font to patched font from nerd-fonts repo
-" - For vim-gutentags, install universal-ctags
 " - :PlugInstall
 " - Restart vim
 
