@@ -215,6 +215,9 @@ endfunction
 " Edit vimrc
 nnoremap <leader>r :edit $MYVIMRC<CR>
 
+" Convert ms-dos newlines to unix
+nnoremap <leader>d :%s/\r$//<CR>
+
 
 " ===============
 " Plugin Key Maps
