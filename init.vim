@@ -3,6 +3,9 @@
 " =======================
 
 " - Dependencies: git, ruby, universal-ctags
+" - To generate tags for gems:
+"   - $ gem install gem-ctags
+"   - $ gem ctags
 " - Install vim-plug (Use :CheckHealth to ensure dependencies installed)
 " - For vim-devicons, set terminal font to patched font from nerd-fonts repo
 " - :PlugInstall
@@ -16,9 +19,9 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 if has('nvim')
   " Autocomplete
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-  Plug 'fishbullet/deoplete-ruby'
-  Plug 'Shougo/deoplete-rct', { 'do': 'gem install rcodetools' }
+  " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  " Plug 'fishbullet/deoplete-ruby'
+  " Plug 'Shougo/deoplete-rct', { 'do': 'gem install rcodetools' }
 
   " Linting
   Plug 'neomake/neomake'
@@ -103,18 +106,18 @@ let g:vimrubocop_keymap = 0
 
 if has('nvim')
   " deoplete.nvim
-  let g:deoplete#enable_at_startup = 1
+  " let g:deoplete#enable_at_startup = 1
 
-  let g:deoplete#omni#input_patterns = {}
-  let g:deoplete#omni#input_patterns.ruby = ['[^. *\t]\.\w*', '[a-zA-Z_]\w*::']
+  " let g:deoplete#omni#input_patterns = {}
+  " let g:deoplete#omni#input_patterns.ruby = ['[^. *\t]\.\w*', '[a-zA-Z_]\w*::']
 
-  let g:deoplete#omni#functions = {}
-  let g:deoplete#omni#functions.ruby = 'rubycomplete#Complete'
+  " let g:deoplete#omni#functions = {}
+  " let g:deoplete#omni#functions.ruby = 'rubycomplete#Complete'
 
-  inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-  function! s:my_cr_function() abort
-    return deoplete#close_popup() . "\<CR>"
-  endfunction
+  " inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+  " function! s:my_cr_function() abort
+  "   return deoplete#close_popup() . "\<CR>"
+  " endfunction
 
   " neomake
   autocmd! BufWritePost * Neomake
@@ -141,6 +144,9 @@ set nowrap
 
 " Break on whitespace for prose
 autocmd FileType markdown,text :set linebreak wrap
+
+" Don't match parens
+set noshowmatch
 
 " Automatically resize splits when host window is resized
 augroup Misc
@@ -235,7 +241,7 @@ nnoremap <leader>a :Grepper<CR>
 
 " rubocop
 nmap <Leader>ru :RuboCop<CR>
-nmap <leader>ra :RuboCop -a<CR>
+nmap <leader>ra :!rubocop -a %<CR>:cclose<CR>
 
 " vim-easy-align
 xmap ga <Plug>(EasyAlign)
