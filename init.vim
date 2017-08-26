@@ -164,7 +164,7 @@ set ignorecase
 set smartcase
 
 " Define tab and newline chars with set list
-set listchars=tab:▸\ ,eol:¬
+set listchars=tab:→\ ,trail:·,eol:¬,extends:…,precedes:…
 
 " Keep undo history
 set undofile
@@ -178,18 +178,12 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 " Show line numbers
 set number
 
-" 24-bit color
-set termguicolors
-
 " No vertical divider char
 set fillchars+=vert:\ 
 
 " Open splits below and vertical splits to the right
 set splitbelow
 set splitright
-
-" Define tab and newline chars with set list
-set listchars=tab:▸\ ,eol:¬
 
 " Two space indent
 set shiftwidth=2
@@ -202,9 +196,14 @@ set expandtab
 " =========
 
 " Split line
-function! BreakHere()
+function! SplitLine()
   s/^\(\s*\)\(.\{-}\)\(\s*\)\(\%#\)\(\s*\)\(.*\)/\1\2\r\1\4\6
   call histdel("/", -1)
+endfunction
+
+" Convert ms-dos newlines to unix
+function! DosToUnixNewlines()
+  :%s/\r$//<CR>
 endfunction
 
 
@@ -213,10 +212,10 @@ endfunction
 " ========
 
 " Edit vimrc
-nnoremap <leader>r :edit $MYVIMRC<CR>
+nnoremap <leader>c :edit $MYVIMRC<CR>
 
 " Convert ms-dos newlines to unix
-nnoremap <leader>d :%s/\r$//<CR>
+nnoremap <leader>d :call DosToUnixNewlines()<CR>
 
 
 " ===============
@@ -234,6 +233,10 @@ nnoremap <leader>b :Buffers<CR>
 " vim-grepper
 nnoremap <leader>a :Grepper<CR>
 
+" rubocop
+nmap <Leader>ru :RuboCop<CR>
+nmap <leader>ra :RuboCop -a<CR>
+
 " vim-easy-align
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
@@ -244,12 +247,15 @@ nmap ga <Plug>(EasyAlign)
 " ===================
 
 " Split line at cursor
-nnoremap S :call BreakHere()<CR>
+nnoremap S :call SplitLine()<CR>
 
 
-" ===========
-" Colorscheme
-" ===========
+" =====
+" Color
+" =====
+
+" 24-bit color
+set termguicolors
 
 " Nord
 let g:nord_italic_comments = 1
