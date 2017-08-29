@@ -11,6 +11,7 @@
 " - :PlugInstall
 " - Restart vim
 
+
 " =======
 " Plugins
 " =======
