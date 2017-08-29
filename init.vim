@@ -177,6 +177,7 @@ set undofile
 
 " Keep cursor away from edges of screen
 set scrolloff=5
+set sidescrolloff=10
 
 " Don't autocomment next line
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
@@ -254,6 +255,10 @@ nmap ga <Plug>(EasyAlign)
 
 " Split line at cursor
 nnoremap S :call SplitLine()<CR>
+
+" Navigate left and right
+nnoremap <C-h> 20h
+nnoremap <C-l> 20l
 
 
 " =====
