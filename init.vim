@@ -28,6 +28,9 @@ if has('nvim')
   Plug 'neomake/neomake'
 endif
 
+" Autocomplete
+Plug 'ajh17/VimCompletesMe'
+
 " Keymappings
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-rsi'
@@ -49,6 +52,7 @@ Plug 'tpope/vim-bundler', { 'do': 'gem install bundler' }
 Plug 'ngmy/vim-rubocop', { 'do': 'gem install rubocop' }
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-endwise'
+Plug 'thoughtbot/vim-rspec'
 
 " CSV
 Plug 'chrisbra/csv.vim'
@@ -70,11 +74,13 @@ Plug 'tpope/vim-markdown'
 " Colorschemes
 Plug 'arcticicestudio/nord-vim'
 
-" Motions
+" Text objects
+Plug 'wellle/targets.vim'
 Plug 'jeetsukumaran/vim-indentwise'
 
 " Text formatting
 Plug 'tpope/vim-surround'
+Plug 'AndrewRadev/splitjoin.vim'
 
 " Comments
 Plug 'tpope/vim-commentary'
@@ -102,6 +108,9 @@ call plug#end()
 let g:airline_extensions = []
 set noshowmode
 
+" vim-rspec
+let g:rspec_command = "!bundle exec rspec -fd --no-profile --color {spec}"
+ 
 " vim-rubocop
 let g:vimrubocop_keymap = 0
 
@@ -234,16 +243,23 @@ nnoremap <leader>d :call DosToUnixNewlines()<CR>
 " see :help unimpaired
 
 " fzf
-nnoremap <leader>f :Files<CR>
-nnoremap <leader>g :GFiles<CR>
-nnoremap <leader>b :Buffers<CR>
+nnoremap <leader>ff :Files<CR>
+nnoremap <leader>fg :GFiles<CR>
+nnoremap <leader>fb :Buffers<CR>
+nnoremap <leader>fc :Commands<CR>
+
+" vim-rspec
+map <Leader>rt :call RunCurrentSpecFile()<CR>
+map <Leader>rs :call RunNearestSpec()<CR>
+map <Leader>rl :call RunLastSpec()<CR>
+map <Leader>ra :call RunAllSpecs()<CR>
 
 " vim-grepper
-nnoremap <leader>a :Grepper<CR>
+nnoremap <leader>g :Grepper<CR>
 
 " rubocop
-nmap <Leader>ru :RuboCop<CR>
-nmap <leader>ra :!rubocop -a %<CR>:cclose<CR>
+nmap <Leader>lu :RuboCop<CR>
+nmap <leader>la :!rubocop -a %<CR>:cclose<CR>
 
 " vim-easy-align
 xmap ga <Plug>(EasyAlign)
@@ -256,10 +272,6 @@ nmap ga <Plug>(EasyAlign)
 
 " Split line at cursor
 nnoremap S :call SplitLine()<CR>
-
-" Navigate left and right
-nnoremap <C-h> 20h
-nnoremap <C-l> 20l
 
 
 " =====
