@@ -80,6 +80,7 @@ Plug 'jeetsukumaran/vim-indentwise'
 
 " Text formatting
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-abolish'
 Plug 'AndrewRadev/splitjoin.vim'
 
 " Comments
@@ -105,7 +106,13 @@ call plug#end()
 " ===============
 
 " vim-airline
-let g:airline_extensions = []
+let g:airline_powerline_fonts = 1
+let g:airline_left_sep=''
+let g:airline_right_alt_sep = ''
+let g:airline_right_sep=''
+let g:airline_left_alt_sep = ''
+let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
+let g:airline#extensions#whitespace#enabled = 0
 set noshowmode
 
 " vim-rspec
