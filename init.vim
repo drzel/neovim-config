@@ -113,6 +113,7 @@ let g:airline_right_sep=''
 let g:airline_left_alt_sep = ''
 let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
 let g:airline#extensions#whitespace#enabled = 0
+let g:airline_section_z = '%#__accent_bold#%3l:%3v%#__restore__#'
 set noshowmode
 
 " vim-rspec
