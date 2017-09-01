@@ -19,11 +19,6 @@
 call plug#begin('~/.local/share/nvim/plugged')
 
 if has('nvim')
-  " Autocomplete
-  " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-  " Plug 'fishbullet/deoplete-ruby'
-  " Plug 'Shougo/deoplete-rct', { 'do': 'gem install rcodetools' }
-
   " Linting
   Plug 'neomake/neomake'
 endif
@@ -113,7 +108,7 @@ let g:airline_right_sep=''
 let g:airline_left_alt_sep = ''
 let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
 let g:airline#extensions#whitespace#enabled = 0
-let g:airline_section_z = '%#__accent_bold#%3l:%3v%#__restore__#'
+let g:airline_section_z = '%{BufferLineIndicator()} :%2c'
 set noshowmode
 
 " vim-rspec
@@ -164,7 +159,7 @@ set nowrap
 autocmd FileType markdown,text :set linebreak wrap
 
 " Don't match parens
-set noshowmatch
+let loaded_matchparen = 1
 
 " Automatically resize splits when host window is resized
 augroup Misc
@@ -204,7 +199,8 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 set number
 
 " No vertical divider char
-set fillchars+=vert:\ 
+set fillchars+=vert:│
+highlight VertSplit guibg=none ctermbg=none
 
 " Open splits below and vertical splits to the right
 set splitbelow
@@ -293,3 +289,20 @@ set termguicolors
 let g:nord_italic_comments = 1
 
 colorscheme nord
+
+let g:line_no_indicator_chars = ['⎺', '⎻', '⎼', '⎽', '⎯']
+
+function! BufferLineIndicator()
+  let l:current_line = line(".")
+  let l:total_lines = line("$")
+
+  if l:current_line == 1
+    return g:line_no_indicator_chars[0]
+  elseif l:current_line == l:total_lines
+    return g:line_no_indicator_chars[-1]
+  else
+    let l:line_no_fraction = floor(l:current_line) / floor(l:total_lines)
+    let l:index = float2nr(l:line_no_fraction * (len(g:line_no_indicator_chars)))
+    return g:line_no_indicator_chars[l:index]
+  endif
+endfunction
