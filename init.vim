@@ -52,8 +52,9 @@ Plug 'thoughtbot/vim-rspec'
 " CSV
 Plug 'chrisbra/csv.vim'
 
-" Status line
+" Statusline
 Plug 'vim-airline/vim-airline'
+Plug 'drzel/vim-line-no-indicator'
 
 " Git
 Plug 'tpope/vim-git'
@@ -108,7 +109,7 @@ let g:airline_right_sep=''
 let g:airline_left_alt_sep = ''
 let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
 let g:airline#extensions#whitespace#enabled = 0
-let g:airline_section_z = '%{BufferLineIndicator()} :%2c'
+let g:airline_section_z = '%{LineNoIndicator()} :%2c'
 set noshowmode
 
 " vim-rspec
@@ -200,7 +201,6 @@ set number
 
 " No vertical divider char
 set fillchars+=vert:│
-highlight VertSplit guibg=none ctermbg=none
 
 " Open splits below and vertical splits to the right
 set splitbelow
@@ -289,20 +289,4 @@ set termguicolors
 let g:nord_italic_comments = 1
 
 colorscheme nord
-
-let g:line_no_indicator_chars = ['⎺', '⎻', '⎼', '⎽', '⎯']
-
-function! BufferLineIndicator()
-  let l:current_line = line(".")
-  let l:total_lines = line("$")
-
-  if l:current_line == 1
-    return g:line_no_indicator_chars[0]
-  elseif l:current_line == l:total_lines
-    return g:line_no_indicator_chars[-1]
-  else
-    let l:line_no_fraction = floor(l:current_line) / floor(l:total_lines)
-    let l:index = float2nr(l:line_no_fraction * (len(g:line_no_indicator_chars)))
-    return g:line_no_indicator_chars[l:index]
-  endif
-endfunction
+highlight VertSplit guibg=none ctermbg=none
