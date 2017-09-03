@@ -7,7 +7,6 @@
 "   - $ gem install gem-ctags
 "   - $ gem ctags
 " - Install vim-plug (Use :CheckHealth to ensure dependencies installed)
-" - For vim-devicons, set terminal font to patched font from nerd-fonts repo
 " - :PlugInstall
 " - Restart vim
 
@@ -54,12 +53,18 @@ Plug 'chrisbra/csv.vim'
 
 " Statusline
 Plug 'vim-airline/vim-airline'
-Plug 'drzel/vim-line-no-indicator'
+
+if isdirectory($HOME . "/Workspace/vim-line-no-indicator")
+  Plug '~/Workspace/vim-line-no-indicator'
+else
+  Plug 'drzel/vim-line-no-indicator'
+end
 
 " Git
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-rhubarb'
 
 " Alignment
 Plug 'junegunn/vim-easy-align'
@@ -91,9 +96,6 @@ Plug 'junegunn/fzf.vim'
 " Tags
 Plug 'ludovicchabant/vim-gutentags'
 
-" Dev icons (load last)
-Plug 'ryanoasis/vim-devicons'
-
 call plug#end()
 
 
@@ -107,16 +109,20 @@ let g:airline_left_sep=''
 let g:airline_right_alt_sep = ''
 let g:airline_right_sep=''
 let g:airline_left_alt_sep = ''
+let g:airline_section_z = '%{LineNoIndicator()} :%2c'
 let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
 let g:airline#extensions#whitespace#enabled = 0
-let g:airline_section_z = '%{LineNoIndicator()} :%2c'
 set noshowmode
+
+" vim-line-no-indicator
+let g:line_no_indicator_chars = ['⎺', '⎻', '⎼', '⎽', '⎯']
 
 " vim-rspec
 let g:rspec_command = "!bundle exec rspec -fd --no-profile --color {spec}"
  
 " vim-rubocop
 let g:vimrubocop_keymap = 0
+
 
 if has('nvim')
   " deoplete.nvim
