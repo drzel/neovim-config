@@ -52,7 +52,7 @@ Plug 'thoughtbot/vim-rspec'
 Plug 'chrisbra/csv.vim'
 
 " Statusline
-Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline'
 
 if isdirectory($HOME . "/Workspace/vim-line-no-indicator")
   Plug '~/Workspace/vim-line-no-indicator'
@@ -103,15 +103,15 @@ call plug#end()
 " Plugin settings
 " ===============
 
-" vim-airline
-let g:airline_powerline_fonts = 1
-let g:airline_left_sep=''
-let g:airline_right_alt_sep = ''
-let g:airline_right_sep=''
-let g:airline_left_alt_sep = ''
-let g:airline_section_z = '%{LineNoIndicator()} :%2c'
-let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
-let g:airline#extensions#whitespace#enabled = 0
+" " vim-airline
+" let g:airline_powerline_fonts = 1
+" let g:airline_left_sep=''
+" let g:airline_right_alt_sep = ''
+" let g:airline_right_sep=''
+" let g:airline_left_alt_sep = ''
+" let g:airline_section_z = '%{LineNoIndicator()} :%2c'
+" let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
+" let g:airline#extensions#whitespace#enabled = 0
 set noshowmode
 
 " vim-line-no-indicator
