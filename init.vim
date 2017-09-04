@@ -109,8 +109,8 @@ let g:airline_left_sep=''
 let g:airline_right_alt_sep = ''
 let g:airline_right_sep=''
 let g:airline_left_alt_sep = ''
-let g:airline_section_z = '%{LineNoIndicator()} :%2c'
-let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
+let g:airline_section_y = '%{LineNoIndicator()}'
+let g:airline_section_z = '%2c'
 let g:airline#extensions#whitespace#enabled = 0
 set noshowmode
 
