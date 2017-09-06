@@ -106,9 +106,9 @@ call plug#end()
 " vim-airline
 let g:airline_powerline_fonts = 1
 let g:airline_left_sep=''
+let g:airline_left_alt_sep = ''
 let g:airline_right_alt_sep = ''
 let g:airline_right_sep=''
-let g:airline_left_alt_sep = ''
 let g:airline_section_x = '%{&filetype}'
 let g:airline_section_y = '%{LineNoIndicator()}'
 let g:airline_section_z = '%2c'
