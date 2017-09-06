@@ -115,9 +115,6 @@ let g:airline_section_z = '%2c'
 let g:airline#extensions#whitespace#enabled = 0
 set noshowmode
 
-" vim-line-no-indicator
-let g:line_no_indicator_chars = ['⎺', '⎻', '⎼', '⎽', '⎯']
-
 " vim-rspec
 let g:rspec_command = "!bundle exec rspec -fd --no-profile --color {spec}"
  
