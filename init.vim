@@ -1,4 +1,3 @@
-" =======================
 " ~/.config/nvim/init.vim
 " =======================
 
@@ -124,20 +123,6 @@ let g:vimrubocop_keymap = 0
 
 
 if has('nvim')
-  " deoplete.nvim
-  " let g:deoplete#enable_at_startup = 1
-
-  " let g:deoplete#omni#input_patterns = {}
-  " let g:deoplete#omni#input_patterns.ruby = ['[^. *\t]\.\w*', '[a-zA-Z_]\w*::']
-
-  " let g:deoplete#omni#functions = {}
-  " let g:deoplete#omni#functions.ruby = 'rubycomplete#Complete'
-
-  " inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-  " function! s:my_cr_function() abort
-  "   return deoplete#close_popup() . "\<CR>"
-  " endfunction
-
   " neomake
   autocmd! BufWritePost * Neomake
 endif
@@ -168,10 +153,10 @@ autocmd FileType markdown,text :set linebreak wrap
 let loaded_matchparen = 1
 
 " Automatically resize splits when host window is resized
-augroup Misc
-  autocmd!
-  autocmd VimResized * exe "normal! \<c-w>="
-augroup END
+" augroup Misc
+"   autocmd!
+"   autocmd VimResized * exe "normal! \<c-w>="
+" augroup END
 
 " Enable backgrounding of unsaved buffers
 set hidden
@@ -258,16 +243,16 @@ nnoremap <leader>fb :Buffers<CR>
 nnoremap <leader>fc :Commands<CR>
 
 " vim-rspec
-map <Leader>rt :call RunCurrentSpecFile()<CR>
-map <Leader>rs :call RunNearestSpec()<CR>
-map <Leader>rl :call RunLastSpec()<CR>
-map <Leader>ra :call RunAllSpecs()<CR>
+map <leader>rt :call RunCurrentSpecFile()<CR>
+map <leader>rs :call RunNearestSpec()<CR>
+map <leader>rl :call RunLastSpec()<CR>
+map <leader>ra :call RunAllSpecs()<CR>
 
 " vim-grepper
 nnoremap <leader>g :Grepper<CR>
 
 " rubocop
-nmap <Leader>lu :RuboCop<CR>
+nmap <leader>lu :RuboCop<CR>
 nmap <leader>la :!rubocop -a %<CR>:cclose<CR>
 
 " vim-easy-align
@@ -282,6 +267,8 @@ nmap ga <Plug>(EasyAlign)
 " Split line at cursor
 nnoremap S :call SplitLine()<CR>
 
+" Yank to end of line
+nnoremap Y y$
 
 " =====
 " Color
