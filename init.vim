@@ -52,12 +52,7 @@ Plug 'chrisbra/csv.vim'
 
 " Statusline
 Plug 'vim-airline/vim-airline'
-
-if isdirectory($HOME . "/Workspace/vim-line-no-indicator")
-  Plug '~/Workspace/vim-line-no-indicator'
-else
-  Plug 'drzel/vim-line-no-indicator'
-end
+Plug 'drzel/vim-line-no-indicator'
 
 " Git
 Plug 'tpope/vim-git'
