@@ -78,6 +78,9 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-abolish'
 Plug 'AndrewRadev/splitjoin.vim'
 
+" Colorizer
+Plug 'chrisbra/Colorizer'
+
 " Comments
 Plug 'tpope/vim-commentary'
 
