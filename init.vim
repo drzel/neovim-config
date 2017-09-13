@@ -140,9 +140,6 @@ let g:gitgutter_eager = 0
 " vim-csv
 let g:csv_autocmd_arrange = 1
 
-" vim-livedown
-let g:livedown_browser = "firefox"
-
 
 " ============
 " Vim settings
