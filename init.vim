@@ -52,12 +52,7 @@ Plug 'chrisbra/csv.vim'
 
 " Statusline
 Plug 'vim-airline/vim-airline'
-
-if isdirectory($HOME . "/Workspace/vim-line-no-indicator")
-  Plug '~/Workspace/vim-line-no-indicator'
-else
-  Plug 'drzel/vim-line-no-indicator'
-end
+Plug 'drzel/vim-line-no-indicator'
 
 " Git
 Plug 'tpope/vim-git'
@@ -91,6 +86,9 @@ Plug 'justinmk/vim-dirvish'
 Plug 'pbrisbin/vim-mkdir'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+
+" Search
+Plug 'romainl/vim-cool'
 
 " Tags
 Plug 'ludovicchabant/vim-gutentags'
@@ -168,7 +166,6 @@ set mouse=a
 set cursorline
 
 " Search not case-sensitive when only lower-case chars used
-set nohlsearch
 set incsearch
 set ignorecase
 set smartcase
