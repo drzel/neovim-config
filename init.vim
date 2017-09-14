@@ -1,3 +1,5 @@
+scriptencoding utf-8
+
 " ~/.config/nvim/init.vim
 " =======================
 
@@ -118,7 +120,7 @@ let g:airline#extensions#whitespace#enabled = 0
 set noshowmode
 
 " vim-rspec
-let g:rspec_command = "!bundle exec rspec -fd --no-profile --color {spec}"
+let g:rspec_command = '!bundle exec rspec -fd --no-profile --color {spec}'
  
 " vim-rubocop
 let g:vimrubocop_keymap = 0
@@ -126,12 +128,16 @@ let g:vimrubocop_keymap = 0
 
 if has('nvim')
   " neomake
-  autocmd! BufWritePost * Neomake
+  augroup neomake
+    autocmd! BufWritePost * Neomake
+  augroup END
 endif
 
 " vim-dirvish
 let g:dirvish_mode = ':sort ,^.*[\/],'
-autocmd FileType dirvish call fugitive#detect(@%) " Enable fugitive's :Gstatus
+augroup dirvish
+  autocmd FileType dirvish call fugitive#detect(@%) " Enable fugitive's :Gstatus
+augroup END
 
 " vim-gitgutter
 let g:gitgutter_realtime = 0
@@ -149,10 +155,12 @@ let g:csv_autocmd_arrange = 1
 set nowrap
 
 " Break on whitespace for prose
-autocmd FileType markdown,text :set linebreak wrap
+augroup markdown
+  autocmd FileType markdown,text :set linebreak wrap
+augroup END
 
 " Don't match parens
-let loaded_matchparen = 1
+let g:loaded_matchparen = 1
 
 " Automatically resize splits when host window is resized
 " augroup Misc
@@ -185,7 +193,9 @@ set scrolloff=5
 set sidescrolloff=10
 
 " Don't autocomment next line
-autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+augroup autocomment
+  autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+augroup END
 
 " Show line numbers
 set number
@@ -210,12 +220,12 @@ set expandtab
 " Split line
 function! SplitLine()
   s/^\(\s*\)\(.\{-}\)\(\s*\)\(\%#\)\(\s*\)\(.*\)/\1\2\r\1\4\6
-  call histdel("/", -1)
+  call histdel('/', -1)
 endfunction
 
 " Convert ms-dos newlines to unix
 function! DosToUnixNewlines()
-  :%s/\r$//<CR>
+  %s/\r$//<CR>
 endfunction
 
 
@@ -241,7 +251,10 @@ nnoremap <leader>d :call DosToUnixNewlines()<CR>
 nnoremap <leader>ff :Files<CR>
 nnoremap <leader>fg :GFiles<CR>
 nnoremap <leader>fb :Buffers<CR>
-nnoremap <leader>fc :Commands<CR>
+nnoremap <leader>fc :Commits<CR>
+nnoremap <leader>fC :BCommits<CR>
+nnoremap <leader>ft :Tags<CR>
+nnoremap <leader>fT :BTags<CR>
 
 " vim-rspec
 map <leader>rt :call RunCurrentSpecFile()<CR>
