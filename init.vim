@@ -1,5 +1,6 @@
 scriptencoding utf-8
 
+
 " ~/.config/nvim/init.vim
 " =======================
 
@@ -128,14 +129,13 @@ let g:vimrubocop_keymap = 0
 
 if has('nvim')
   " neomake
-  augroup neomake
-    autocmd! BufWritePost * Neomake
-  augroup END
+  call neomake#configure#automake('w') " Run on file write
 endif
 
 " vim-dirvish
 let g:dirvish_mode = ':sort ,^.*[\/],'
 augroup dirvish
+  autocmd!
   autocmd FileType dirvish call fugitive#detect(@%) " Enable fugitive's :Gstatus
 augroup END
 
@@ -156,6 +156,7 @@ set nowrap
 
 " Break on whitespace for prose
 augroup markdown
+  autocmd!
   autocmd FileType markdown,text :set linebreak wrap
 augroup END
 
@@ -194,6 +195,7 @@ set sidescrolloff=10
 
 " Don't autocomment next line
 augroup autocomment
+  autocmd!
   autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 augroup END
 
