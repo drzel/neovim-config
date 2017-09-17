@@ -81,6 +81,7 @@ Plug 'jeetsukumaran/vim-indentwise'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-abolish'
 Plug 'AndrewRadev/splitjoin.vim'
+Plug 'drzel/vim-split-line'
 
 " Colorizer
 Plug 'chrisbra/Colorizer'
@@ -220,10 +221,10 @@ set expandtab
 " =========
 
 " Split line
-function! SplitLine()
-  s/^\(\s*\)\(.\{-}\)\(\s*\)\(\%#\)\(\s*\)\(.*\)/\1\2\r\1\4\6
-  call histdel('/', -1)
-endfunction
+" function! SplitLine()
+"   s/^\(\s*\)\(.\{-}\)\(\s*\)\(\%#\)\(\s*\)\(.*\)/\1\2\r\1\4\6
+"   call histdel('/', -1)
+" endfunction
 
 " Convert ms-dos newlines to unix
 function! DosToUnixNewlines()
@@ -281,7 +282,7 @@ nmap ga <Plug>(EasyAlign)
 " ===================
 
 " Split line at cursor
-nnoremap S :call SplitLine()<CR>
+nnoremap S :SplitLine<CR>
 
 " Yank to end of line
 nnoremap Y y$
