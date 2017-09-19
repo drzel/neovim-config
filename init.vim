@@ -1,10 +1,9 @@
 scriptencoding utf-8
 
-
 " ~/.config/nvim/init.vim
 " =======================
 
-" - Dependencies: git, ruby, universal-ctags
+" - Dependencies: git, ruby, npm, ctags
 " - To generate tags for gems:
 "   - $ gem install gem-ctags
 "   - $ gem ctags
@@ -68,7 +67,7 @@ Plug 'junegunn/vim-easy-align'
 
 " Markdown
 Plug 'tpope/vim-markdown'
-Plug 'shime/vim-livedown'
+Plug 'shime/vim-livedown', { 'do': 'npm install livedown' }
 
 " Colorschemes
 Plug 'arcticicestudio/nord-vim'
@@ -81,6 +80,7 @@ Plug 'jeetsukumaran/vim-indentwise'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-abolish'
 Plug 'AndrewRadev/splitjoin.vim'
+Plug 'drzel/vim-split-line'
 
 " Colorizer
 Plug 'chrisbra/Colorizer'
@@ -143,9 +143,6 @@ augroup END
 let g:gitgutter_realtime = 0
 let g:gitgutter_eager = 0
 
-" vim-csv
-let g:csv_autocmd_arrange = 1
-
 
 " ============
 " Vim settings
@@ -164,10 +161,10 @@ augroup END
 let g:loaded_matchparen = 1
 
 " Automatically resize splits when host window is resized
-" augroup Misc
-"   autocmd!
-"   autocmd VimResized * exe "normal! \<c-w>="
-" augroup END
+augroup Misc
+  autocmd!
+  autocmd VimResized * exe "normal! \<c-w>="
+augroup END
 
 " Enable backgrounding of unsaved buffers
 set hidden
@@ -215,31 +212,12 @@ let &softtabstop = &shiftwidth
 set expandtab
 
 
-" =========
-" Functions
-" =========
-
-" Split line
-function! SplitLine()
-  s/^\(\s*\)\(.\{-}\)\(\s*\)\(\%#\)\(\s*\)\(.*\)/\1\2\r\1\4\6
-  call histdel('/', -1)
-endfunction
-
-" Convert ms-dos newlines to unix
-function! DosToUnixNewlines()
-  %s/\r$//<CR>
-endfunction
-
-
 " ========
 " Key maps
 " ========
 
 " Edit vimrc
 nnoremap <leader>c :edit $MYVIMRC<CR>
-
-" Convert ms-dos newlines to unix
-nnoremap <leader>d :call DosToUnixNewlines()<CR>
 
 
 " ===============
@@ -267,10 +245,6 @@ map <leader>ra :call RunAllSpecs()<CR>
 " vim-grepper
 nnoremap <leader>g :Grepper<CR>
 
-" rubocop
-nmap <leader>lu :RuboCop<CR>
-nmap <leader>la :!rubocop -a %<CR>:cclose<CR>
-
 " vim-easy-align
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
@@ -281,7 +255,7 @@ nmap ga <Plug>(EasyAlign)
 " ===================
 
 " Split line at cursor
-nnoremap S :call SplitLine()<CR>
+nnoremap S :SplitLine<CR>
 
 " Yank to end of line
 nnoremap Y y$
