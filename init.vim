@@ -71,6 +71,8 @@ Plug 'shime/vim-livedown', { 'do': 'npm install livedown' }
 
 " Colorschemes
 Plug 'drzel/nord-vim'
+Plug 'albertorestifo/github.vim'
+Plug 'rakr/vim-two-firewatch'
 
 " Text objects
 Plug 'wellle/targets.vim'
@@ -127,8 +129,8 @@ let g:rspec_command = '!bundle exec rspec -fd --no-profile --color {spec}'
 let g:vimrubocop_keymap = 0
 
 
+" neomake
 if has('nvim')
-  " neomake
   call neomake#configure#automake('w') " Run on file write
 endif
 
@@ -260,6 +262,7 @@ nnoremap S :SplitLine<CR>
 " Yank to end of line
 nnoremap Y y$
 
+
 " =====
 " Color
 " =====
@@ -267,9 +270,13 @@ nnoremap Y y$
 " 24-bit color
 set termguicolors
 
-" Nord
+" nord
 let g:nord_italic_comments = 1
 let g:nord_comment_brightness = 15
 
+" two-firewatch
+" set background=light
+" let g:two_firewatch_italics=1
+" let g:airline_theme='twofirewatch'
+
 colorscheme nord
-highlight VertSplit guibg=none ctermbg=none
