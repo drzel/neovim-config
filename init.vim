@@ -18,8 +18,8 @@ scriptencoding utf-8
 
 call plug#begin('~/.local/share/nvim/plugged')
 
+" Linting
 if has('nvim')
-  " Linting
   Plug 'neomake/neomake'
 endif
 
@@ -127,8 +127,8 @@ let g:rspec_command = '!bundle exec rspec -fd --no-profile --color {spec}'
 let g:vimrubocop_keymap = 0
 
 
+" neomake
 if has('nvim')
-  " neomake
   call neomake#configure#automake('w') " Run on file write
 endif
 
