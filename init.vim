@@ -233,6 +233,9 @@ nnoremap <leader>c :edit $MYVIMRC<CR>
 " vim-unimpaired
 " see :help unimpaired
 
+" vim-gitgutter
+" see :help gitgutter
+
 " fzf
 nnoremap <leader>ff :Files<CR>
 nnoremap <leader>fg :GFiles<CR>
@@ -256,8 +259,8 @@ xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 " history-traverse
-nmap <c-n> <Plug>HistoryTraverseGoBack
-nmap <c-m> <Plug>HistoryTraverseGoForward
+nnoremap <leader>q :Back<CR>
+nnoremap <leader>w :Forward<CR>
 
 
 " ===================
@@ -269,6 +272,7 @@ nnoremap S :SplitLine<CR>
 
 " Yank to end of line
 nnoremap Y y$
+
 
 " =====
 " Color
