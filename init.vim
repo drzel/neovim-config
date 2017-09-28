@@ -68,6 +68,7 @@ Plug 'junegunn/vim-easy-align'
 " Markdown
 Plug 'tpope/vim-markdown'
 Plug 'shime/vim-livedown', { 'do': 'npm install livedown' }
+Plug 'dhruvasagar/vim-table-mode'
 
 " Colorschemes
 Plug 'arcticicestudio/nord-vim'
@@ -149,6 +150,8 @@ let g:gitgutter_eager = 0
 let g:history_ft_ignore = ['pyc', 'netrw', 'dirvish']
 let g:history_max_len = 1000
 
+" vim-table-mode
+let g:table_mode_corner='|'
 
 " ============
 " Vim settings
@@ -258,10 +261,6 @@ nnoremap <leader>g :Grepper<CR>
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
-" history-traverse
-nnoremap <leader>q :Back<CR>
-nnoremap <leader>w :Forward<CR>
-
 
 " ===================
 " Overriding Key Maps
@@ -272,6 +271,10 @@ nnoremap S :SplitLine<CR>
 
 " Yank to end of line
 nnoremap Y y$
+
+" history-traverse
+nnoremap H :Back<CR>
+nnoremap L :Forward<CR>
 
 
 " =====
