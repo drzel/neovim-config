@@ -94,7 +94,7 @@ Plug 'justinmk/vim-dirvish'
 Plug 'pbrisbin/vim-mkdir'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug '~/Workspace/history-traverse'
+Plug 'drzel/history-traverse'
 
 " Search
 Plug 'romainl/vim-cool'
