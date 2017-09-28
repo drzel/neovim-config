@@ -70,7 +70,7 @@ Plug 'tpope/vim-markdown'
 Plug 'shime/vim-livedown', { 'do': 'npm install livedown' }
 
 " Colorschemes
-Plug 'drzel/nord-vim'
+Plug 'arcticicestudio/nord-vim'
 
 " Text objects
 Plug 'wellle/targets.vim'
@@ -93,6 +93,7 @@ Plug 'justinmk/vim-dirvish'
 Plug 'pbrisbin/vim-mkdir'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug '~/Workspace/history-traverse'
 
 " Search
 Plug 'romainl/vim-cool'
@@ -113,24 +114,25 @@ let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
 let g:airline_right_alt_sep = ''
 let g:airline_right_sep = ''
+
 let g:airline_section_x = '%{&filetype}'
-let g:airline_section_y = '%#__accent_bold#%{LineNoIndicator()}%#__restore__#'
-let g:airline_section_z = '%2c'
+let g:airline_section_y = '%{HistoryIndicator()}'
+let g:airline_section_z = '%#__accent_bold#%{LineNoIndicator()} %#__restore__#%2c'
 let g:airline#extensions#default#section_truncate_width = {}
 let g:airline#extensions#whitespace#enabled = 0
 set noshowmode
-
-" vim-rspec
-let g:rspec_command = '!bundle exec rspec -fd --no-profile --color {spec}'
- 
-" vim-rubocop
-let g:vimrubocop_keymap = 0
 
 
 " neomake
 if has('nvim')
   call neomake#configure#automake('w') " Run on file write
 endif
+
+" vim-rspec
+let g:rspec_command = '!bundle exec rspec -fd --no-profile --color {spec}'
+
+" vim-rubocop
+let g:vimrubocop_keymap = 0
 
 " vim-dirvish
 let g:dirvish_mode = ':sort ,^.*[\/],'
@@ -142,6 +144,10 @@ augroup END
 " vim-gitgutter
 let g:gitgutter_realtime = 0
 let g:gitgutter_eager = 0
+
+" history-traverse
+let g:history_ft_ignore = ['pyc', 'netrw', 'dirvish']
+let g:history_max_len = 1000
 
 
 " ============
@@ -248,6 +254,10 @@ nnoremap <leader>g :Grepper<CR>
 " vim-easy-align
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
+
+" history-traverse
+nmap <c-n> <Plug>HistoryTraverseGoBack
+nmap <c-m> <Plug>HistoryTraverseGoForward
 
 
 " ===================
