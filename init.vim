@@ -20,7 +20,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 " Linting
 if has('nvim')
-  Plug 'neomake/neomake'
+  Plug 'w0rp/ale'
 endif
 
 " Autocomplete
@@ -71,7 +71,7 @@ Plug 'shime/vim-livedown', { 'do': 'npm install livedown' }
 Plug 'dhruvasagar/vim-table-mode'
 
 " Colorschemes
-Plug 'arcticicestudio/nord-vim'
+Plug 'arcticicestudio/nord-vim', { 'branch': 'develop' }
 
 " Text objects
 Plug 'wellle/targets.vim'
@@ -123,11 +123,11 @@ let g:airline#extensions#default#section_truncate_width = {}
 let g:airline#extensions#whitespace#enabled = 0
 set noshowmode
 
-
-" neomake
-if has('nvim')
-  call neomake#configure#automake('w') " Run on file write
-endif
+" ale
+let g:ale_sign_error = ''
+let g:ale_sign_warning = ''
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_enter = 0
 
 " vim-rspec
 let g:rspec_command = '!bundle exec rspec -fd --no-profile --color {spec}'
