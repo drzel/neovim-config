@@ -286,7 +286,7 @@ set termguicolors
 
 " Nord
 let g:nord_italic_comments = 1
-let g:nord_comment_brightness = 15
+let g:nord_comment_brightness = 10
 
 colorscheme nord
 highlight VertSplit guibg=none ctermbg=none
