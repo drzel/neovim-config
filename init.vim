@@ -117,8 +117,8 @@ let g:airline_right_alt_sep = ''
 let g:airline_right_sep = ''
 
 let g:airline_section_x = '%{&filetype}'
-let g:airline_section_y = '%{HistoryIndicator()}'
-let g:airline_section_z = '%#__accent_bold#%{LineNoIndicator()} %#__restore__#%2c'
+let g:airline_section_y = '%#__accent_bold#%{HistoryIndicator()}%#__restore__#'
+let g:airline_section_z = '%#__accent_bold#%{LineNoIndicator()}%#__restore__# %2c'
 let g:airline#extensions#default#section_truncate_width = {}
 let g:airline#extensions#whitespace#enabled = 0
 set noshowmode
