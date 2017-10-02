@@ -273,8 +273,8 @@ nnoremap S :SplitLine<CR>
 nnoremap Y y$
 
 " history-traverse
-nnoremap H :Back<CR>
-nnoremap L :Forward<CR>
+nnoremap H :HisTravBack<CR>
+nnoremap L :HisTravForward<CR>
 
 
 " =====
