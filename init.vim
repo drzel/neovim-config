@@ -197,7 +197,6 @@ set undofile
 
 " Keep cursor away from edges of screen
 set scrolloff=5
-set sidescrolloff=10
 
 " Don't autocomment next line
 augroup autocomment
