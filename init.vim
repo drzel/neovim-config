@@ -3,7 +3,7 @@ scriptencoding utf-8
 " ~/.config/nvim/init.vim
 " =======================
 
-" - Dependencies: git, ruby, npm, ctags
+" - Dependencies: git, ruby, npm, ctags + probably more
 " - To generate tags for gems:
 "   - $ gem install gem-ctags
 "   - $ gem ctags
@@ -19,9 +19,7 @@ scriptencoding utf-8
 call plug#begin('~/.local/share/nvim/plugged')
 
 " Linting
-if has('nvim')
-  Plug 'w0rp/ale'
-endif
+Plug 'w0rp/ale'
 
 " Autocomplete
 Plug 'ajh17/VimCompletesMe'
@@ -100,7 +98,7 @@ Plug 'ckarnell/history-traverse'
 Plug 'romainl/vim-cool'
 
 " Tags
-Plug 'ludovicchabant/vim-gutentags'
+Plug 'ludovicchabant/vim-gutentags', { 'do': 'gem install ripper-tags' }
 
 call plug#end()
 
@@ -108,6 +106,9 @@ call plug#end()
 " ===============
 " Plugin settings
 " ===============
+
+" vim-gutentags
+let g:gutentags_ctags_executable_ruby = 'ripper-tags -R --exclude=vendor --ignore-unsupported-options'
 
 " vim-airline
 let g:airline_powerline_fonts = 1
@@ -246,6 +247,7 @@ nnoremap <leader>fc :Commits<CR>
 nnoremap <leader>fC :BCommits<CR>
 nnoremap <leader>ft :Tags<CR>
 nnoremap <leader>fT :BTags<CR>
+nnoremap <leader>fo :History<CR>
 
 " vim-rspec
 map <leader>rt :call RunCurrentSpecFile()<CR>
