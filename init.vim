@@ -50,6 +50,9 @@ Plug 'thoughtbot/vim-rspec'
 " CSV
 Plug 'chrisbra/csv.vim'
 
+" tmux
+Plug 'tmux-plugins/vim-tmux'
+
 " Statusline
 Plug 'vim-airline/vim-airline'
 Plug 'drzel/vim-line-no-indicator'
