@@ -204,7 +204,11 @@ function! ScrollOffPct(pct)
   let &scrolloff = l:lines
 endfunction
 
-call ScrollOffPct(25)
+augroup VCenterCursor
+  au!
+  au BufEnter,WinEnter,WinNew,VimResized *,*.*
+        \ call ScrollOffPct(25)
+augroup END
 
 " Don't autocomment next line
 augroup autocomment
