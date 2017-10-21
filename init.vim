@@ -107,8 +107,11 @@ call plug#end()
 " Plugin settings
 " ===============
 
+" vim-markdown
+let g:markdown_fenced_languages = ['javascript', 'ruby']
+
 " vim-gutentags
-let g:gutentags_ctags_executable_ruby = 'ripper-tags -R --exclude=vendor --ignore-unsupported-options'
+" let g:gutentags_ctags_executable_ruby = 'ripper-tags -R --exclude=vendor --ignore-unsupported-options'
 
 " vim-airline
 let g:airline_powerline_fonts = 1
@@ -170,12 +173,6 @@ augroup END
 " Don't match parens
 let g:loaded_matchparen = 1
 
-" Automatically resize splits when host window is resized
-augroup Misc
-  autocmd!
-  autocmd VimResized * exe "normal! \<c-w>="
-augroup END
-
 " Enable backgrounding of unsaved buffers
 set hidden
 
@@ -197,7 +194,14 @@ set listchars=tab:→\ ,trail:·,eol:¬,extends:…,precedes:…
 set undofile
 
 " Keep cursor away from edges of screen
-set scrolloff=5
+function! ScrollOffPct(pct)
+  let l:visual_lines_in_active_window = winheight(win_getid())
+  let l:fraction = floor(a:pct) / floor(100)
+  let l:lines = float2nr(l:visual_lines_in_active_window * l:fraction)
+  let &scrolloff = l:lines
+endfunction
+
+call ScrollOffPct(25)
 
 " Don't autocomment next line
 augroup autocomment
