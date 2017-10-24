@@ -3,7 +3,7 @@ scriptencoding utf-8
 " ~/.config/nvim/init.vim
 " =======================
 
-" - Dependencies: git, ruby, npm, ctags + probably more
+" - Dependencies: git, ruby, npm, ctags, ale linters
 " - To generate tags for gems:
 "   - $ gem install gem-ctags
 "   - $ gem ctags
@@ -131,8 +131,8 @@ let g:airline#extensions#whitespace#enabled = 0
 set noshowmode
 
 " ale
-let g:ale_sign_error = ''
-let g:ale_sign_warning = ''
+let g:ale_sign_error = '✖'
+let g:ale_sign_warning = '⯅'
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_enter = 0
 
@@ -182,9 +182,6 @@ set hidden
 " Enable mouse
 set mouse=a
 
-" Show cursorline
-set cursorline
-
 " Search not case-sensitive when only lower-case chars used
 set incsearch
 set ignorecase
@@ -210,17 +207,8 @@ augroup VCenterCursor
         \ call ScrollOffPct(25)
 augroup END
 
-" Don't autocomment next line
-augroup autocomment
-  autocmd!
-  autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-augroup END
-
 " Show line numbers
 set number
-
-" No vertical divider char
-set fillchars+=vert:│
 
 " Open splits below and vertical splits to the right
 set splitbelow
@@ -231,6 +219,11 @@ set shiftwidth=2
 let &softtabstop = &shiftwidth
 set expandtab
 
+" No vertical divider char
+set fillchars+=vert:\ 
+
+" Be explicit about cursor
+set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
 
 " ========
 " Key maps
@@ -300,5 +293,4 @@ set termguicolors
 let g:nord_italic_comments = 1
 let g:nord_comment_brightness = 10
 
-colorscheme nord
-highlight VertSplit guibg=none ctermbg=none
+silent! colorscheme nord
