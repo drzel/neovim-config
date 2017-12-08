@@ -29,7 +29,9 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-rsi'
 
 " Utilities
+Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-repeat'
+Plug 'drzel/vim-in-proportion'
 
 " Grep
 Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] }
@@ -187,6 +189,9 @@ set incsearch
 set ignorecase
 set smartcase
 
+" Show incremental results
+set inccommand=nosplit
+
 " Define tab and newline chars with set list
 set listchars=tab:→\ ,trail:·,eol:¬,extends:…,precedes:…
 
@@ -206,6 +211,10 @@ augroup VCenterCursor
   au BufEnter,WinEnter,WinNew,VimResized *,*.*
         \ call ScrollOffPct(25)
 augroup END
+
+
+
+
 
 " Show line numbers
 set number
