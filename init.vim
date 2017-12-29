@@ -39,6 +39,9 @@ Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] }
 " Unix
 Plug 'tpope/vim-eunuch'
 
+" Language pack
+Plug 'sheerun/vim-polyglot'
+
 " Ruby
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails', { 'do': 'gem install rails' }
@@ -48,6 +51,10 @@ Plug 'ngmy/vim-rubocop', { 'do': 'gem install rubocop' }
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-endwise'
 Plug 'thoughtbot/vim-rspec'
+
+" Javascript
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
 
 " CSV
 Plug 'chrisbra/csv.vim'
@@ -166,6 +173,9 @@ let g:table_mode_corner='|'
 " Vim settings
 " ============
 
+" Don't auto-comment
+set formatoptions-=cro
+
 " Don't wrap text by default
 set nowrap
 
@@ -200,9 +210,9 @@ set undofile
 
 " Keep cursor away from edges of screen
 function! ScrollOffPct(pct)
-  let l:visual_lines_in_active_window = winheight(win_getid())
+  let l:visible_lines_in_active_window = winheight(win_getid())
   let l:fraction = floor(a:pct) / floor(100)
-  let l:lines = float2nr(l:visual_lines_in_active_window * l:fraction)
+  let l:lines = float2nr(l:visible_lines_in_active_window * l:fraction)
   let &scrolloff = l:lines
 endfunction
 
@@ -211,10 +221,6 @@ augroup VCenterCursor
   au BufEnter,WinEnter,WinNew,VimResized *,*.*
         \ call ScrollOffPct(25)
 augroup END
-
-
-
-
 
 " Show line numbers
 set number
@@ -228,7 +234,7 @@ set shiftwidth=2
 let &softtabstop = &shiftwidth
 set expandtab
 
-" No vertical divider char
+" Whitespace vertical divider char
 set fillchars+=vert:\ 
 
 " Be explicit about cursor
