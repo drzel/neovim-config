@@ -209,17 +209,15 @@ set listchars=tab:→\ ,trail:·,eol:¬,extends:…,precedes:…
 set undofile
 
 " Keep cursor away from edges of screen
-function! ScrollOffPct(pct)
+function! ScrollOffFraction(fraction)
   let l:visible_lines_in_active_window = winheight(win_getid())
-  let l:fraction = floor(a:pct) / floor(100)
-  let l:lines = float2nr(l:visible_lines_in_active_window * l:fraction)
-  let &scrolloff = l:lines
+  let &scrolloff = float2nr(l:visible_lines_in_active_window * a:fraction)
 endfunction
 
 augroup VCenterCursor
   au!
   au BufEnter,WinEnter,WinNew,VimResized *,*.*
-        \ call ScrollOffPct(25)
+        \ call ScrollOffFraction(0.25)
 augroup END
 
 " Show line numbers
