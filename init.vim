@@ -119,6 +119,9 @@ call plug#end()
 " Plugin settings
 " ===============
 
+" vim-ruby
+let g:ruby_indent_access_modifier_style="indent"
+
 " vim-markdown
 let g:markdown_fenced_languages = ['javascript', 'ruby']
 
@@ -168,6 +171,7 @@ let g:history_max_len = 1000
 
 " vim-table-mode
 let g:table_mode_corner='|'
+
 
 " ============
 " Vim settings
@@ -236,7 +240,8 @@ set expandtab
 set fillchars+=vert:\ 
 
 " Be explicit about cursor
-set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
+" set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
+
 
 " ========
 " Key maps
