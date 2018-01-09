@@ -261,6 +261,9 @@ nnoremap <leader>c :edit $MYVIMRC<CR>
 " vim-gitgutter
 " see :help gitgutter
 
+" ale
+nnoremap <leader>l :ALEToggle<CR>
+
 " fzf
 nnoremap <leader>ff :Files<CR>
 nnoremap <leader>fg :GFiles<CR>
