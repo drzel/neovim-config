@@ -3,7 +3,7 @@ scriptencoding utf-8
 " ~/.config/nvim/init.vim
 " =======================
 
-" - Dependencies: git, ruby, npm, ctags, ale linters
+" - Dependencies: git, python2, python3, ruby, npm, ctags, ale linters
 " - To generate tags for gems:
 "   - $ gem install gem-ctags
 "   - $ gem ctags
@@ -110,7 +110,7 @@ Plug 'ckarnell/history-traverse'
 Plug 'romainl/vim-cool'
 
 " Tags
-Plug 'ludovicchabant/vim-gutentags', { 'do': 'gem install ripper-tags' }
+Plug 'ludovicchabant/vim-gutentags'
 
 call plug#end()
 
@@ -124,9 +124,6 @@ let g:ruby_indent_access_modifier_style="indent"
 
 " vim-markdown
 let g:markdown_fenced_languages = ['javascript', 'ruby']
-
-" vim-gutentags
-" let g:gutentags_ctags_executable_ruby = 'ripper-tags -R --exclude=vendor --ignore-unsupported-options'
 
 " vim-airline
 let g:airline_powerline_fonts = 1
