@@ -186,9 +186,6 @@ augroup markdown
   autocmd FileType markdown,text :set linebreak wrap
 augroup END
 
-" Don't match parens
-let g:loaded_matchparen = 1
-
 " Enable backgrounding of unsaved buffers
 set hidden
 
