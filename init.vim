@@ -32,6 +32,7 @@ Plug 'tpope/vim-rsi'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-repeat'
 Plug 'drzel/vim-in-proportion'
+Plug 'drzel/vim-scroll-off-fraction'
 
 " Grep
 Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] }
@@ -205,21 +206,6 @@ set listchars=tab:→\ ,trail:·,eol:¬,extends:…,precedes:…
 
 " Keep undo history
 set undofile
-
-" Keep cursor away from edges of screen
-function! ScrollOffFraction(fraction)
-  let l:visible_lines_in_active_window = winheight(win_getid())
-  let &scrolloff = float2nr(l:visible_lines_in_active_window * a:fraction)
-endfunction
-
-augroup VCenterCursor
-  au!
-  au BufEnter,WinEnter,WinNew,VimResized *,*.*
-        \ call ScrollOffFraction(0.25)
-augroup END
-
-" Show line numbers
-set number
 
 " Open splits below and vertical splits to the right
 set splitbelow
