@@ -175,6 +175,9 @@ let g:table_mode_corner='|'
 " Vim settings
 " ============
 
+" Show line numbers
+set number
+
 " Don't auto-comment
 set formatoptions-=cro
 
