@@ -1,4 +1,4 @@
-scriptencoding utf-8
+scriptencoding utf-
 
 " ~/.config/nvim/init.vim
 " =======================
@@ -35,7 +35,7 @@ Plug 'drzel/vim-in-proportion'
 Plug 'drzel/vim-scroll-off-fraction'
 
 " Grep
-Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] }
+Plug 'mhinz/vim-grepper'
 
 " Unix
 Plug 'tpope/vim-eunuch'
