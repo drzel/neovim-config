@@ -1,4 +1,4 @@
-scriptencoding utf-
+scriptencoding utf-8
 
 " ~/.config/nvim/init.vim
 " =======================
@@ -45,10 +45,10 @@ Plug 'sheerun/vim-polyglot'
 
 " Ruby
 Plug 'vim-ruby/vim-ruby'
-Plug 'tpope/vim-rails', { 'do': 'gem install rails' }
-Plug 'tpope/vim-rake', { 'do': 'gem install rake' }
-Plug 'tpope/vim-bundler', { 'do': 'gem install bundler' }
-Plug 'ngmy/vim-rubocop', { 'do': 'gem install rubocop' }
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-rake'
+Plug 'tpope/vim-bundler'
+Plug 'ngmy/vim-rubocop'
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-endwise'
 Plug 'thoughtbot/vim-rspec'
@@ -78,7 +78,7 @@ Plug 'junegunn/vim-easy-align'
 
 " Markdown
 Plug 'tpope/vim-markdown'
-Plug 'shime/vim-livedown', { 'do': 'npm install livedown' }
+Plug 'shime/vim-livedown', { 'do': 'npm install -g livedown' }
 Plug 'dhruvasagar/vim-table-mode'
 
 " Colorschemes
