@@ -121,7 +121,7 @@ call plug#end()
 " ===============
 
 " vim-ruby
-let g:ruby_indent_access_modifier_style="indent"
+let g:ruby_indent_access_modifier_style='indent'
 
 " vim-markdown
 let g:markdown_fenced_languages = ['javascript', 'ruby']
@@ -141,8 +141,8 @@ let g:airline#extensions#whitespace#enabled = 0
 set noshowmode
 
 " ale
-let g:ale_sign_error = '✖'
-let g:ale_sign_warning = '⯅'
+let g:ale_sign_error = '❌'
+let g:ale_sign_warning = '❕'
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_enter = 0
 
