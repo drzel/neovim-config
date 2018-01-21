@@ -138,7 +138,7 @@ let g:airline_right_sep = ''
 
 let g:airline_section_x = '%{WebDevIconsGetFileTypeSymbol()}'
 let g:airline_section_y = '%#__accent_bold#%{LineNoIndicator()}%#__restore__#'
-let g:airline_section_z = '%2c'
+let g:airline_section_z = '%02c'
 let g:airline#extensions#default#section_truncate_width = {}
 let g:airline#extensions#whitespace#enabled = 0
 set noshowmode
@@ -228,9 +228,6 @@ set expandtab
 
 " Whitespace vertical divider char
 set fillchars+=vert:\ 
-
-" Be explicit about cursor
-" set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
 
 
 " ========
