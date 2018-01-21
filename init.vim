@@ -113,6 +113,9 @@ Plug 'romainl/vim-cool'
 " Tags
 Plug 'ludovicchabant/vim-gutentags'
 
+" Cosmetic (devicons must load last)
+Plug 'ryanoasis/vim-devicons'
+
 call plug#end()
 
 
@@ -133,7 +136,7 @@ let g:airline_left_alt_sep = ''
 let g:airline_right_alt_sep = ''
 let g:airline_right_sep = ''
 
-let g:airline_section_x = '%{&filetype}'
+let g:airline_section_x = '%{WebDevIconsGetFileTypeSymbol()}'
 let g:airline_section_y = '%#__accent_bold#%{LineNoIndicator()}%#__restore__#'
 let g:airline_section_z = '%2c'
 let g:airline#extensions#default#section_truncate_width = {}
@@ -169,6 +172,10 @@ let g:history_max_len = 1000
 
 " vim-table-mode
 let g:table_mode_corner='|'
+
+" vim-devicons
+let g:webdevicons_enable_airline_tabline = 0
+let g:webdevicons_enable_airline_statusline = 0
 
 
 " ============
