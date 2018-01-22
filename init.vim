@@ -48,7 +48,6 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rake'
 Plug 'tpope/vim-bundler'
-Plug 'ngmy/vim-rubocop'
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-endwise'
 Plug 'thoughtbot/vim-rspec'
@@ -151,9 +150,6 @@ let g:ale_lint_on_enter = 0
 
 " vim-rspec
 let g:rspec_command = '!bundle exec rspec -fd --no-profile --color {spec}'
-
-" vim-rubocop
-let g:vimrubocop_keymap = 0
 
 " vim-dirvish
 let g:dirvish_mode = ':sort ,^.*[\/],'
@@ -300,7 +296,7 @@ set termguicolors
 
 " Nord
 let g:nord_italic = 1
-let g:nord_italic_comments = 1
+let g:nord_italic_comments = 0
 let g:nord_comment_brightness = 10
 let g:nord_uniform_diff_background = 1
 
