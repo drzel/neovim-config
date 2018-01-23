@@ -44,6 +44,7 @@ Plug 'tpope/vim-eunuch'
 Plug 'sheerun/vim-polyglot'
 
 " Ruby
+Plug 'tpope/vim-rbenv'
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rake'
