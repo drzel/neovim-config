@@ -226,6 +226,9 @@ set expandtab
 " Whitespace vertical divider char
 set fillchars+=vert:\ 
 
+" Allow `crontab -e` on Mac OS
+set backupskip+=/private/tmp/*
+
 
 " ========
 " Key maps
