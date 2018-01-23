@@ -189,7 +189,7 @@ set formatoptions-=cro
 set nowrap
 
 " Break on whitespace for prose
-augroup markdown
+augroup prose
   autocmd!
   autocmd FileType markdown,text :set linebreak wrap
 augroup END
