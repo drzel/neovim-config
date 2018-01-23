@@ -182,9 +182,6 @@ let g:webdevicons_enable_airline_statusline = 0
 " Show line numbers
 set number
 
-" Don't auto-comment
-set formatoptions-=cro
-
 " Don't wrap text by default
 set nowrap
 
