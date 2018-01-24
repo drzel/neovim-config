@@ -231,6 +231,16 @@ set expandtab
 set backupskip+=/private/tmp/*
 
 
+" =========
+" Filetypes
+" =========
+
+augroup envfiletype
+  autocmd!
+  autocmd! BufNewFile,BufRead .env.* setfiletype sh
+augroup END
+
+
 " ========
 " Key maps
 " ========
@@ -304,10 +314,9 @@ let g:nord_italic = 1
 let g:nord_italic_comments = 0
 let g:nord_comment_brightness = 10
 let g:nord_uniform_diff_background = 1
-let g:nord_uniform_status_lines = 1
 
 silent! colorscheme nord
 
-" Line for vertical split
+" Colorscheme overrides
 hi VertSplit guibg=bg
 set fillchars+=vert:│
