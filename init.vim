@@ -40,8 +40,11 @@ Plug 'mhinz/vim-grepper'
 " Unix
 Plug 'tpope/vim-eunuch'
 
-" Language pack
-Plug 'sheerun/vim-polyglot'
+" Ansible
+Plug 'pearofducks/ansible-vim'
+
+" Git
+Plug 'tpope/vim-git'
 
 " Ruby
 Plug 'tpope/vim-rbenv'
@@ -52,10 +55,14 @@ Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-endwise'
 Plug 'thoughtbot/vim-rspec'
+Plug 'keith/rspec.vim'
 
 " Javascript
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
+
+" JSON
+Plug 'elzr/vim-json'
 
 " CSV
 Plug 'chrisbra/csv.vim'
@@ -220,9 +227,6 @@ set shiftwidth=2
 let &softtabstop = &shiftwidth
 set expandtab
 
-" Whitespace vertical divider char
-set fillchars+=vert:\ 
-
 " Allow `crontab -e` on Mac OS
 set backupskip+=/private/tmp/*
 
@@ -300,5 +304,10 @@ let g:nord_italic = 1
 let g:nord_italic_comments = 0
 let g:nord_comment_brightness = 10
 let g:nord_uniform_diff_background = 1
+let g:nord_uniform_status_lines = 1
 
 silent! colorscheme nord
+
+" Line for vertical split
+hi VertSplit guibg=bg
+set fillchars+=vert:│
