@@ -144,7 +144,7 @@ let g:airline_right_alt_sep = ''
 let g:airline_right_sep = ''
 
 let g:airline_section_x = '%{WebDevIconsGetFileTypeSymbol()}'
-let g:airline_section_y = '%#__accent_bold#%{LineNoIndicator()}%#__restore__#'
+let g:airline_section_y = '%{LineNoIndicator()}'
 let g:airline_section_z = '%02c'
 let g:airline#extensions#default#section_truncate_width = {}
 let g:airline#extensions#whitespace#enabled = 0
