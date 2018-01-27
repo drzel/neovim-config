@@ -137,15 +137,22 @@ let g:ruby_indent_access_modifier_style='indent'
 let g:markdown_fenced_languages = ['javascript', 'ruby']
 
 " vim-airline
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+
+let g:airline_symbols.readonly = '🔒'
+
 let g:airline_powerline_fonts = 1
 let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
 let g:airline_right_alt_sep = ''
 let g:airline_right_sep = ''
-let g:airline_symbols.readonly = '🔒'
+
 let g:airline_section_x = '%{WebDevIconsGetFileTypeSymbol()}'
 let g:airline_section_y = '%{LineNoIndicator()}'
 let g:airline_section_z = '%02c'
+
 let g:airline#extensions#default#section_truncate_width = {}
 let g:airline#extensions#whitespace#enabled = 0
 set noshowmode
