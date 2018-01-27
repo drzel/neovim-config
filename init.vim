@@ -142,7 +142,7 @@ let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
 let g:airline_right_alt_sep = ''
 let g:airline_right_sep = ''
-
+let g:airline_symbols.readonly = '🔒'
 let g:airline_section_x = '%{WebDevIconsGetFileTypeSymbol()}'
 let g:airline_section_y = '%{LineNoIndicator()}'
 let g:airline_section_z = '%02c'
