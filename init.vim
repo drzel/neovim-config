@@ -55,7 +55,6 @@ Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-endwise'
 Plug 'thoughtbot/vim-rspec'
-Plug 'keith/rspec.vim'
 
 " Javascript
 Plug 'pangloss/vim-javascript'
@@ -187,6 +186,9 @@ let g:table_mode_corner='|'
 " vim-devicons
 let g:webdevicons_enable_airline_tabline = 0
 let g:webdevicons_enable_airline_statusline = 0
+
+" vim-rspec
+let g:rspec_command = 'Dispatch bundle exec rspec {spec}'
 
 
 " ============
