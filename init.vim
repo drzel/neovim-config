@@ -201,12 +201,6 @@ set number
 " Don't wrap text by default
 set nowrap
 
-" Break on whitespace for prose
-augroup prose
-  autocmd!
-  autocmd FileType markdown,text :set linebreak wrap
-augroup END
-
 " Enable backgrounding of unsaved buffers
 set hidden
 
