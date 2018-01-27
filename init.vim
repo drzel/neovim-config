@@ -32,7 +32,7 @@ Plug 'tpope/vim-rsi'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-repeat'
 Plug 'drzel/vim-in-proportion'
-Plug 'drzel/vim-scroll-off-fraction'
+Plug 'drzel/vim-scrolloff-fraction'
 
 " Grep
 Plug 'mhinz/vim-grepper'
@@ -278,6 +278,7 @@ nnoremap <leader>fC :BCommits<CR>
 nnoremap <leader>ft :Tags<CR>
 nnoremap <leader>fT :BTags<CR>
 nnoremap <leader>fo :History<CR>
+nnoremap <leader>fr :History:<CR>
 
 " vim-rspec
 map <leader>rt :call RunCurrentSpecFile()<CR>
