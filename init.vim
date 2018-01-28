@@ -230,6 +230,10 @@ set shiftwidth=2
 let &softtabstop = &shiftwidth
 set expandtab
 
+" readline like command autocompletion
+set wildmode=longest,list,full
+set wildmenu
+
 " Allow `crontab -e` on Mac OS
 set backupskip+=/private/tmp/*
 
