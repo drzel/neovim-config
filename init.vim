@@ -31,7 +31,6 @@ Plug 'tpope/vim-rsi'
 " Utilities
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-repeat'
-Plug 'drzel/vim-in-proportion'
 Plug 'drzel/vim-scrolloff-fraction'
 
 " Grep
@@ -154,7 +153,6 @@ let g:airline_section_z = '%02c'
 
 let g:airline#extensions#default#section_truncate_width = {}
 let g:airline#extensions#whitespace#enabled = 0
-set noshowmode
 
 " ale
 let g:ale_sign_error = '❌'
@@ -194,6 +192,9 @@ let g:rspec_command = 'Dispatch bundle exec rspec {spec}'
 " ============
 " Vim settings
 " ============
+
+" Always show status line
+set noshowmode
 
 " Show line numbers
 set number
