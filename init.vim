@@ -161,7 +161,7 @@ let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_enter = 0
 
 " vim-rspec
-let g:rspec_command = '!bundle exec rspec -fd --no-profile --color {spec}'
+let g:rspec_command = 'Dispatch bundle exec rspec {spec}'
 
 " vim-dirvish
 let g:dirvish_mode = ':sort ,^.*[\/],'
@@ -184,9 +184,6 @@ let g:table_mode_corner='|'
 " vim-devicons
 let g:webdevicons_enable_airline_tabline = 0
 let g:webdevicons_enable_airline_statusline = 0
-
-" vim-rspec
-let g:rspec_command = 'Dispatch bundle exec rspec {spec}'
 
 
 " ============
@@ -237,6 +234,9 @@ set wildmenu
 
 " Allow `crontab -e` on Mac OS
 set backupskip+=/private/tmp/*
+
+" Vertical split character
+set fillchars+=vert:│
 
 
 " =========
@@ -328,4 +328,3 @@ silent! colorscheme nord
 
 " Colorscheme overrides
 hi VertSplit guibg=bg
-set fillchars+=vert:│
