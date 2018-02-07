@@ -118,6 +118,11 @@ Plug 'romainl/vim-cool'
 " Tags
 Plug 'ludovicchabant/vim-gutentags'
 
+" Documentation
+if has('unix')
+  Plug 'KabbAmine/zeavim.vim'
+endif
+
 " Cosmetic (devicons must load last)
 Plug 'ryanoasis/vim-devicons'
 
@@ -327,4 +332,4 @@ let g:nord_uniform_diff_background = 1
 silent! colorscheme nord
 
 " Colorscheme overrides
-hi VertSplit guibg=bg
+highlight VertSplit guibg=bg
