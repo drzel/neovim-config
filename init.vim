@@ -119,7 +119,9 @@ Plug 'romainl/vim-cool'
 Plug 'ludovicchabant/vim-gutentags'
 
 " Documentation
-if has('unix')
+if has('macunix')
+  Plug 'rizzatti/dash.vim'
+elseif has('unix')
   Plug 'KabbAmine/zeavim.vim'
 endif
 
