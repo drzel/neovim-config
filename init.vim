@@ -182,7 +182,6 @@ let g:gitgutter_realtime = 0
 let g:gitgutter_eager = 0
 
 " history-traverse
-let g:history_ft_ignore = ['pyc', 'netrw', 'dirvish']
 let g:history_max_len = 1000
 
 " vim-table-mode
