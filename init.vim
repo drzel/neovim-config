@@ -65,6 +65,9 @@ Plug 'elzr/vim-json'
 " CSV
 Plug 'chrisbra/csv.vim'
 
+" Slim
+Plug 'slim-template/vim-slim'
+
 " tmux
 Plug 'tmux-plugins/vim-tmux'
 
@@ -135,11 +138,17 @@ call plug#end()
 " Plugin settings
 " ===============
 
+" neovim
+let g:ruby_host_prog = '~/.rbenv/versions/2.5.0/bin/neovim-ruby-host'
+
 " vim-ruby
 let g:ruby_indent_access_modifier_style='indent'
 
 " vim-markdown
 let g:markdown_fenced_languages = ['javascript', 'ruby']
+
+" vim-json
+let g:vim_json_syntax_conceal = 0
 
 " vim-airline
 if !exists('g:airline_symbols')
@@ -162,8 +171,8 @@ let g:airline#extensions#default#section_truncate_width = {}
 let g:airline#extensions#whitespace#enabled = 0
 
 " ale
-let g:ale_sign_error = '❌'
-let g:ale_sign_warning = '❕'
+" let g:ale_sign_error = '❌'
+" let g:ale_sign_warning = '❕'
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_enter = 0
 
