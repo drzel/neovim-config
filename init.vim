@@ -1,15 +1,19 @@
-scriptencoding utf-8
-
-" ~/.config/nvim/init.vim
-" =======================
-
 " - Dependencies: git, python2, python3, ruby, npm, ctags, ale linters
 " - To generate tags for gems:
 "   - $ gem install gem-ctags
 "   - $ gem ctags
-" - Install vim-plug (Use :CheckHealth to ensure dependencies installed)
+" - Use :CheckHealth to ensure dependencies installed
 " - :PlugInstall
 " - Restart vim
+
+
+" Install vim-plug
+if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
+  silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+scriptencoding utf-8
 
 
 " =======
@@ -86,7 +90,7 @@ Plug 'junegunn/vim-easy-align'
 
 " Markdown
 Plug 'tpope/vim-markdown'
-Plug 'shime/vim-livedown', { 'do': 'npm install -g livedown' }
+Plug 'shime/vim-livedown', { 'do': 'sudo npm install -g livedown' }
 Plug 'dhruvasagar/vim-table-mode'
 
 " Colorschemes
@@ -137,9 +141,6 @@ call plug#end()
 " ===============
 " Plugin settings
 " ===============
-
-" neovim
-let g:ruby_host_prog = '~/.rbenv/versions/2.5.0/bin/neovim-ruby-host'
 
 " vim-ruby
 let g:ruby_indent_access_modifier_style='indent'
