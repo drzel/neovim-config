@@ -90,7 +90,6 @@ Plug 'junegunn/vim-easy-align'
 
 " Markdown
 Plug 'tpope/vim-markdown'
-Plug 'shime/vim-livedown', { 'do': 'sudo npm install -g livedown' }
 Plug 'dhruvasagar/vim-table-mode'
 
 " Colorschemes
