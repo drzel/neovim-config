@@ -75,9 +75,10 @@ Plug 'slim-template/vim-slim'
 " tmux
 Plug 'tmux-plugins/vim-tmux'
 
-" Statusline
-Plug 'vim-airline/vim-airline'
-Plug 'drzel/vim-line-no-indicator'
+" " Statusline
+Plug 'itchyny/lightline.vim'
+" Plug 'vim-airline/vim-airline'
+" Plug 'drzel/vim-line-no-indicator'
 
 " Git
 Plug 'tpope/vim-git'
@@ -150,25 +151,32 @@ let g:markdown_fenced_languages = ['javascript', 'ruby']
 " vim-json
 let g:vim_json_syntax_conceal = 0
 
+" vim-lightline
+
+let g:lightline = {
+      \ 'colorscheme': 'nord',
+      \ }
+
+
 " vim-airline
-if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
-endif
+" if !exists('g:airline_symbols')
+"   let g:airline_symbols = {}
+" endif
 
-let g:airline_symbols.readonly = '🔒'
+" let g:airline_symbols.readonly = '🔒'
 
-let g:airline_powerline_fonts = 1
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_alt_sep = ''
-let g:airline_right_sep = ''
+" let g:airline_powerline_fonts = 1
+" let g:airline_left_sep = ''
+" let g:airline_left_alt_sep = ''
+" let g:airline_right_alt_sep = ''
+" let g:airline_right_sep = ''
 
-let g:airline_section_x = '%{WebDevIconsGetFileTypeSymbol()}'
-let g:airline_section_y = '%{LineNoIndicator()}'
-let g:airline_section_z = '%02c'
+" let g:airline_section_x = '%{WebDevIconsGetFileTypeSymbol()}'
+" let g:airline_section_y = '%{LineNoIndicator()}'
+" let g:airline_section_z = '%02c'
 
-let g:airline#extensions#default#section_truncate_width = {}
-let g:airline#extensions#whitespace#enabled = 0
+" let g:airline#extensions#default#section_truncate_width = {}
+" let g:airline#extensions#whitespace#enabled = 0
 
 " ale
 " let g:ale_sign_error = '❌'
