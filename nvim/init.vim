@@ -63,6 +63,9 @@ Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-endwise'
 Plug 'thoughtbot/vim-rspec'
 
+" QuakeC
+Plug 'FortressOne/quakec.vim'
+
 " Javascript
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
