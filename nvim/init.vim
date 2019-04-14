@@ -90,7 +90,7 @@ Plug 'itchyny/lightline.vim'
 " Git
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
+Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-rhubarb'
 
 " Alignment
@@ -102,6 +102,8 @@ Plug 'dhruvasagar/vim-table-mode'
 
 " Colorschemes
 Plug 'arcticicestudio/nord-vim', { 'branch': 'develop' }
+Plug 'kaicataldo/material.vim'
+Plug 'chriskempson/base16-vim'
 
 " Text objects
 Plug 'wellle/targets.vim'
@@ -150,7 +152,7 @@ call plug#end()
 " ===============
 
 " vim-ruby
-let g:ruby_indent_access_modifier_style='indent'
+let g:ruby_indent_access_modifier_style='normal'
 
 " vim-markdown
 let g:markdown_fenced_languages = ['javascript', 'ruby']
@@ -186,6 +188,7 @@ let g:lightline = {
 " let g:airline#extensions#whitespace#enabled = 0
 
 " ale
+let g:ale_enabled = 0
 " let g:ale_sign_error = '❌'
 " let g:ale_sign_warning = '❕'
 let g:ale_lint_on_text_changed = 'never'
@@ -201,9 +204,8 @@ augroup dirvish
   autocmd FileType dirvish call fugitive#detect(@%) " Enable fugitive's :Gstatus
 augroup END
 
-" vim-gitgutter
-let g:gitgutter_realtime = 0
-let g:gitgutter_eager = 0
+" vim-signify
+let g:signify_vcs_list = [ 'git' ]
 
 " history-traverse
 let g:history_max_len = 1000
@@ -214,6 +216,10 @@ let g:table_mode_corner='|'
 " vim-devicons
 let g:webdevicons_enable_airline_tabline = 0
 let g:webdevicons_enable_airline_statusline = 0
+
+" csv
+let g:csv_nomap_h = 1
+let g:csv_nomap_l = 1
 
 
 " ============
@@ -354,7 +360,15 @@ let g:nord_italic_comments = 0
 let g:nord_comment_brightness = 10
 let g:nord_uniform_diff_background = 1
 
+" Material
+let g:material_theme_style = 'palenight'
+let g:material_terminal_italics = 1
+" let g:airline_theme = 'material'
+
+set background=dark
+" silent! colorscheme material 
 silent! colorscheme nord
+" colorscheme base16-tomorrow-night
 
 " Colorscheme overrides
 highlight VertSplit guibg=bg
