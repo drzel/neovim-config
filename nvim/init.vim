@@ -84,8 +84,6 @@ Plug 'tmux-plugins/vim-tmux'
 
 " " Statusline
 Plug 'itchyny/lightline.vim'
-" Plug 'vim-airline/vim-airline'
-" Plug 'drzel/vim-line-no-indicator'
 
 " Git
 Plug 'tpope/vim-git'
@@ -166,27 +164,6 @@ let g:lightline = {
       \ 'colorscheme': 'nord',
       \ }
 
-
-" vim-airline
-" if !exists('g:airline_symbols')
-"   let g:airline_symbols = {}
-" endif
-
-" let g:airline_symbols.readonly = '🔒'
-
-" let g:airline_powerline_fonts = 1
-" let g:airline_left_sep = ''
-" let g:airline_left_alt_sep = ''
-" let g:airline_right_alt_sep = ''
-" let g:airline_right_sep = ''
-
-" let g:airline_section_x = '%{WebDevIconsGetFileTypeSymbol()}'
-" let g:airline_section_y = '%{LineNoIndicator()}'
-" let g:airline_section_z = '%02c'
-
-" let g:airline#extensions#default#section_truncate_width = {}
-" let g:airline#extensions#whitespace#enabled = 0
-
 " ale
 let g:ale_enabled = 0
 " let g:ale_sign_error = '❌'
@@ -214,8 +191,8 @@ let g:history_max_len = 1000
 let g:table_mode_corner='|'
 
 " vim-devicons
-let g:webdevicons_enable_airline_tabline = 0
-let g:webdevicons_enable_airline_statusline = 0
+" let g:webdevicons_enable_airline_tabline = 0
+" let g:webdevicons_enable_airline_statusline = 0
 
 " csv
 let g:csv_nomap_h = 1
@@ -366,9 +343,10 @@ let g:material_terminal_italics = 1
 " let g:airline_theme = 'material'
 
 set background=dark
+
 " silent! colorscheme material 
+" silent! colorscheme base16-tomorrow-night
 silent! colorscheme nord
-" colorscheme base16-tomorrow-night
 
 " Colorscheme overrides
 highlight VertSplit guibg=bg
