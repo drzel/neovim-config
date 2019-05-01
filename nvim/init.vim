@@ -84,13 +84,11 @@ Plug 'tmux-plugins/vim-tmux'
 
 " " Statusline
 Plug 'itchyny/lightline.vim'
-" Plug 'vim-airline/vim-airline'
-" Plug 'drzel/vim-line-no-indicator'
 
 " Git
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
+Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-rhubarb'
 
 " Alignment
@@ -103,6 +101,8 @@ Plug 'iamcco/markdown-preview.vim'
 
 " Colorschemes
 Plug 'arcticicestudio/nord-vim', { 'branch': 'develop' }
+Plug 'kaicataldo/material.vim'
+Plug 'chriskempson/base16-vim'
 
 " Text objects
 Plug 'wellle/targets.vim'
@@ -151,7 +151,7 @@ call plug#end()
 " ===============
 
 " vim-ruby
-let g:ruby_indent_access_modifier_style='indent'
+let g:ruby_indent_access_modifier_style='normal'
 
 " vim-markdown
 let g:markdown_fenced_languages = ['javascript', 'ruby']
@@ -165,28 +165,8 @@ let g:lightline = {
       \ 'colorscheme': 'nord',
       \ }
 
-
-" vim-airline
-" if !exists('g:airline_symbols')
-"   let g:airline_symbols = {}
-" endif
-
-" let g:airline_symbols.readonly = '🔒'
-
-" let g:airline_powerline_fonts = 1
-" let g:airline_left_sep = ''
-" let g:airline_left_alt_sep = ''
-" let g:airline_right_alt_sep = ''
-" let g:airline_right_sep = ''
-
-" let g:airline_section_x = '%{WebDevIconsGetFileTypeSymbol()}'
-" let g:airline_section_y = '%{LineNoIndicator()}'
-" let g:airline_section_z = '%02c'
-
-" let g:airline#extensions#default#section_truncate_width = {}
-" let g:airline#extensions#whitespace#enabled = 0
-
 " ale
+let g:ale_enabled = 0
 " let g:ale_sign_error = '❌'
 " let g:ale_sign_warning = '❕'
 let g:ale_lint_on_text_changed = 'never'
@@ -202,9 +182,8 @@ augroup dirvish
   autocmd FileType dirvish call fugitive#detect(@%) " Enable fugitive's :Gstatus
 augroup END
 
-" vim-gitgutter
-let g:gitgutter_realtime = 0
-let g:gitgutter_eager = 0
+" vim-signify
+let g:signify_vcs_list = [ 'git' ]
 
 " history-traverse
 let g:history_max_len = 1000
@@ -213,8 +192,12 @@ let g:history_max_len = 1000
 let g:table_mode_corner='|'
 
 " vim-devicons
-let g:webdevicons_enable_airline_tabline = 0
-let g:webdevicons_enable_airline_statusline = 0
+" let g:webdevicons_enable_airline_tabline = 0
+" let g:webdevicons_enable_airline_statusline = 0
+
+" csv
+let g:csv_nomap_h = 1
+let g:csv_nomap_l = 1
 
 
 " ============
@@ -358,6 +341,15 @@ let g:nord_italic_comments = 0
 let g:nord_comment_brightness = 10
 let g:nord_uniform_diff_background = 1
 
+" Material
+let g:material_theme_style = 'palenight'
+let g:material_terminal_italics = 1
+" let g:airline_theme = 'material'
+
+set background=dark
+
+" silent! colorscheme material 
+" silent! colorscheme base16-tomorrow-night
 silent! colorscheme nord
 
 " Colorscheme overrides
