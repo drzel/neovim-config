@@ -99,6 +99,7 @@ Plug 'junegunn/vim-easy-align'
 " Markdown
 Plug 'tpope/vim-markdown'
 Plug 'dhruvasagar/vim-table-mode'
+Plug 'iamcco/markdown-preview.vim'
 
 " Colorschemes
 Plug 'arcticicestudio/nord-vim', { 'branch': 'develop' }
@@ -285,6 +286,9 @@ augroup END
 
 " Edit vimrc
 nnoremap <leader>c :edit $MYVIMRC<CR>
+
+" Toggle spell check
+nnoremap <leader>s :set spell!<CR>
 
 
 " ===============
