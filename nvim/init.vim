@@ -198,6 +198,10 @@ let g:table_mode_corner='|'
 " let g:webdevicons_enable_airline_tabline = 0
 " let g:webdevicons_enable_airline_statusline = 0
 
+" indentLine
+let g:indentLine_char = '▏'
+let g:indentLine_enabled = 0
+
 " csv
 let g:csv_nomap_h = 1
 let g:csv_nomap_l = 1
@@ -314,6 +318,9 @@ nnoremap <leader>gg :GrepperGit
 " vim-easy-align
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
+
+" indentLine
+nnoremap <leader>i :IndentLinesToggle<CR>
 
 
 " ===================
