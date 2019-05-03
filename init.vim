@@ -123,6 +123,9 @@ Plug 'romainl/vim-cool'
 " Tags
 Plug 'ludovicchabant/vim-gutentags'
 
+" Indent guides
+Plug 'Yggdroot/indentLine'
+
 " Documentation
 if has('macunix')
   Plug 'rizzatti/dash.vim'
@@ -342,7 +345,6 @@ set termguicolors
 " Nord
 let g:nord_italic = 1
 let g:nord_italic_comments = 0
-let g:nord_comment_brightness = 10
 let g:nord_uniform_diff_background = 1
 
 " Material
