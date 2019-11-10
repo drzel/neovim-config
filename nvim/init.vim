@@ -79,6 +79,9 @@ Plug 'chrisbra/csv.vim'
 " Slim
 Plug 'slim-template/vim-slim'
 
+" nginx
+Plug 'chr4/nginx.vim'
+
 " tmux
 Plug 'tmux-plugins/vim-tmux'
 
@@ -110,9 +113,11 @@ Plug 'jeetsukumaran/vim-indentwise'
 
 " Text formatting
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-ragtag'
 Plug 'tpope/vim-abolish'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'drzel/vim-split-line'
+Plug 'junegunn/goyo.vim'
 
 " Colorizer
 Plug 'chrisbra/Colorizer'
@@ -129,6 +134,9 @@ Plug 'ckarnell/history-traverse'
 
 " Search
 Plug 'romainl/vim-cool'
+
+" vim-line-no-indicator
+Plug 'drzel/vim-line-no-indicator'
 
 " Tags
 Plug 'ludovicchabant/vim-gutentags'
@@ -165,7 +173,41 @@ let g:vim_json_syntax_conceal = 0
 " vim-lightline
 
 let g:lightline = {
-      \ 'colorscheme': 'nord',
+      \   'colorscheme': 'nord',
+      \ }
+
+let g:lightline.component = {
+      \   'indicator': '%{LineNoIndicator()}'
+      \ }
+
+let g:lightline.active = {
+      \   'left': [
+      \     [ 'mode', 'paste' ],
+      \     [ 'readonly', 'relativepath', 'modified' ]
+      \   ],
+      \   'right': [
+      \     [ 'indicator' ],
+      \     [ 'lineinfo' ]
+      \   ]
+      \ }
+
+let g:lightline.inactive = {
+      \   'left': [
+      \     [ 'filename' ]
+      \   ],
+      \   'right': [
+      \     [ 'indicator' ],
+      \     [ 'lineinfo' ]
+      \   ]
+      \ }
+
+let g:lightline.tabline = {
+      \   'left': [
+      \     [ 'tabs' ]
+      \   ],
+      \   'right': [
+      \     [ 'close' ]
+      \   ]
       \ }
 
 " ale
