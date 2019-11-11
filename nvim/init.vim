@@ -99,8 +99,7 @@ Plug 'junegunn/vim-easy-align'
 
 " Markdown
 Plug 'tpope/vim-markdown'
-Plug 'dhruvasagar/vim-table-mode'
-Plug 'iamcco/markdown-preview.vim'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 
 " Colorschemes
 Plug 'arcticicestudio/nord-vim', { 'branch': 'develop' }
