@@ -192,7 +192,8 @@ let g:lightline.active = {
 
 let g:lightline.inactive = {
       \   'left': [
-      \     []
+      \     [],
+      \     [ 'relativepath' ]
       \   ],
       \   'right': [
       \     [],
