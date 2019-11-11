@@ -193,11 +193,11 @@ let g:lightline.active = {
 
 let g:lightline.inactive = {
       \   'left': [
-      \     [ 'filename' ]
+      \     []
       \   ],
       \   'right': [
-      \     [ 'indicator' ],
-      \     [ 'lineinfo' ]
+      \     [],
+      \     []
       \   ]
       \ }
 
@@ -321,6 +321,9 @@ nnoremap <leader>c :edit $MYVIMRC<CR>
 
 " Toggle spell check
 nnoremap <leader>s :set spell!<CR>
+
+" Copy filename
+nnoremap <leader>yf :let @" = expand("%")<CR>
 
 
 " ===============
