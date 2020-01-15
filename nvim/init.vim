@@ -1,7 +1,11 @@
-" - Dependencies: git, python2, python3, ruby, npm, ctags, ale linters
+" - Dependencies: git, python2, python3, ruby, npm, ctags, rbenv, ale linters
 " - To generate tags for gems:
-"   - $ gem install gem-ctags
-"   - $ gem ctags
+"       ```
+"       gem install gem-ctags
+"       gem ctags
+"       ```
+" - Use rbenv plugin to Automatically generate ctags for rbenv Ruby stdlibs:
+"     https://github.com/tpope/rbenv-ctags
 " - Use :CheckHealth to ensure dependencies installed
 " - :PlugInstall
 " - Restart vim
