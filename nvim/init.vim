@@ -216,8 +216,6 @@ let g:lightline.tabline = {
 
 " ale
 let g:ale_enabled = 0
-" let g:ale_sign_error = '❌'
-" let g:ale_sign_warning = '❕'
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_enter = 0
 
@@ -341,7 +339,8 @@ nnoremap <leader>yf :let @" = expand("%")<CR>
 " see :help gitgutter
 
 " ale
-nnoremap <leader>l :ALEToggle<CR>
+nnoremap <leader>al :ALEToggle<CR>
+nnoremap <leader>af :ALEFix<CR>
 
 " fzf
 nnoremap <leader>ff :Files<CR>
