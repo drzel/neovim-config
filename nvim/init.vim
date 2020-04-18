@@ -1,4 +1,5 @@
-" - Dependencies: git, python2, python3, ruby, npm, ctags, rbenv, ale linters
+" - Dependencies: git, python2, python3, ruby, npm, ctags, rbenv, rubocop,
+"     vint, bat
 " - To generate tags for gems:
 "       ```
 "       gem install gem-ctags
@@ -412,7 +413,7 @@ set termguicolors
 
 " Nord
 let g:nord_italic = 1
-let g:nord_italic_comments = 0
+let g:nord_italic_comments = 1
 let g:nord_uniform_diff_background = 1
 
 " Material
