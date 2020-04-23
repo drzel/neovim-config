@@ -1,3 +1,3 @@
-set noexpandtab
-set tabstop=8 shiftwidth=8 softtabstop=8
+set expandtab
+set tabstop=4 shiftwidth=4 softtabstop=4
 set autoindent
