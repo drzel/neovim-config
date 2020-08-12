@@ -58,6 +58,9 @@ Plug 'pearofducks/ansible-vim'
 " Git
 Plug 'tpope/vim-git'
 
+" HTML
+Plug 'othree/html5.vim'
+
 " Ruby
 Plug 'tpope/vim-rbenv'
 Plug 'vim-ruby/vim-ruby'
@@ -79,10 +82,7 @@ Plug 'mxw/vim-jsx'
 Plug 'elzr/vim-json'
 
 " CSV
-Plug 'chrisbra/csv.vim'
-
-" Slim
-Plug 'slim-template/vim-slim'
+" Plug 'chrisbra/csv.vim'
 
 " nginx
 Plug 'chr4/nginx.vim'
