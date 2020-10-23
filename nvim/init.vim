@@ -44,7 +44,7 @@ Plug 'tpope/vim-rsi'
 " Utilities
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-repeat'
-Plug 'drzel/vim-scrolloff-fraction'
+" Plug 'drzel/vim-scrolloff-fraction'
 
 " Grep
 Plug 'mhinz/vim-grepper'
@@ -135,6 +135,7 @@ Plug 'pbrisbin/vim-mkdir'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'ckarnell/history-traverse'
+Plug 'benwainwright/fzf-project'
 
 " Search
 Plug 'romainl/vim-cool'
@@ -164,6 +165,10 @@ call plug#end()
 " ===============
 " Plugin settings
 " ===============
+
+" fzf-project
+let g:fzfSwitchProjectWorkspaces = ['~/Workspace/FortressOne', '~/TappyDays', '~/Mozo']
+let g:fzfSwitchProjectAlwaysChooseFile = 0
 
 " vim-ruby
 let g:ruby_indent_access_modifier_style='normal'
@@ -352,8 +357,8 @@ nnoremap <leader>fc :Commits<CR>
 nnoremap <leader>fC :BCommits<CR>
 nnoremap <leader>ft :Tags<CR>
 nnoremap <leader>fT :BTags<CR>
-nnoremap <leader>fo :History<CR>
-nnoremap <leader>fr :History:<CR>
+nnoremap <leader>fh :History<CR>
+nnoremap <leader>fp :FzfSwitchProject<CR>
 
 " vim-rspec
 map <leader>rt :call RunCurrentSpecFile()<CR>
