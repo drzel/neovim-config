@@ -165,6 +165,9 @@ call plug#end()
 " Plugin settings
 " ===============
 
+" fzf
+let g:fzf_preview_window = ''
+
 " vim-ruby
 let g:ruby_indent_access_modifier_style='normal'
 
