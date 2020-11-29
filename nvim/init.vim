@@ -110,6 +110,8 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 Plug 'arcticicestudio/nord-vim', { 'branch': 'develop' }
 Plug 'kaicataldo/material.vim'
 Plug 'chriskempson/base16-vim'
+Plug 'morhetz/gruvbox'
+Plug 'shinchu/lightline-gruvbox.vim'
 
 " Text objects
 Plug 'wellle/targets.vim'
@@ -182,7 +184,7 @@ let g:vim_json_syntax_conceal = 0
 " vim-lightline
 
 let g:lightline = {
-      \   'colorscheme': 'nord',
+      \   'colorscheme': 'gruvbox',
       \ }
 
 let g:lightline.component = {
@@ -430,7 +432,7 @@ set background=dark
 
 " silent! colorscheme material 
 " silent! colorscheme base16-tomorrow-night
-silent! colorscheme nord
+autocmd vimenter * ++nested colorscheme gruvbox
 
 " Colorscheme overrides
 highlight VertSplit guibg=bg
