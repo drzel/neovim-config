@@ -11,16 +11,17 @@
 " - :PlugInstall
 " - Restart vim
 
+augroup vimrc
+  autocmd!
+augroup END
+
 
 " Install vim-plug
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
   silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-  augroup vim-plug
-    autocmd!
-    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-  augroup END
+  autocmd vimrc VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
 scriptencoding utf-8
@@ -210,10 +211,7 @@ let g:rspec_command = 'Dispatch bundle exec rspec {spec}'
 " vim-dirvish
 let g:dirvish_mode = ':sort ,^.*[\/],'
 
-augroup dirvish
-  autocmd!
-  autocmd FileType dirvish call fugitive#detect(@%) " Enable fugitive's :Gstatus
-augroup END
+autocmd vimrc FileType dirvish call fugitive#detect(@%) " Enable fugitive's :Gstatus
 
 " vim-signify
 let g:signify_vcs_list = [ 'git' ]
@@ -291,10 +289,7 @@ set fillchars+=vert:│
 " Filetypes
 " =========
 
-augroup envfiletype
-  autocmd!
-  autocmd! BufNewFile,BufRead .env.* setfiletype sh
-augroup END
+autocmd vimrc BufNewFile,BufRead .env.* setfiletype sh
 
 
 " ========
@@ -398,10 +393,7 @@ set termguicolors
 
 set background=dark
 
-augroup colourscheme
-  autocmd!
-  autocmd VimEnter * ++nested colorscheme gruvbox
-augroup END
+autocmd vimrc VimEnter * ++nested colorscheme gruvbox
 
 " Colorscheme overrides
 highlight VertSplit guibg=bg
