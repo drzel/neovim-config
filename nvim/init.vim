@@ -338,8 +338,8 @@ map <leader>rl :call RunLastSpec()<CR>
 map <leader>ra :call RunAllSpecs()<CR>
 
 " vim-grepper
-nnoremap <leader>gf :GrepperGrep 
-nnoremap <leader>gg :GrepperGit 
+nnoremap <leader>gf :Grepper -tool grep<CR>
+nnoremap <leader>gg :Grepper -tool git<CR>
 
 " vim-easy-align
 xmap ga <Plug>(EasyAlign)
