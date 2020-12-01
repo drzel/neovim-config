@@ -182,17 +182,22 @@ function! LightlineModified()
   return &modified ? ' +' : ''
 endfunction
 
+function! LightlineFiletype()
+  return strlen(&filetype) ? WebDevIconsGetFileTypeSymbol() : 'no ft'
+endfunction
+
 let g:lightline = {
       \   'colorscheme': 'gruvbox',
       \   'component': {
       \     'll_relativepath': '%f%{LightlineModified()}'
       \   },
       \   'component_function': {
-      \     'cwd_basename': 'CwdBasename'
+      \     'cwd_basename': 'CwdBasename',
+      \     'll_filetype': 'LightlineFiletype'
       \   },
       \   'active': {
       \     'left': [['mode', 'paste'], ['cwd_basename'], [], ['ll_relativepath']],
-      \     'right': [[], ['percent'], ['filetype']]
+      \     'right': [[], ['percent'], ['ll_filetype']]
       \   },
       \   'inactive': {
       \     'left': [['ll_relativepath']],
@@ -210,8 +215,6 @@ let g:rspec_command = 'Dispatch bundle exec rspec {spec}'
 
 " vim-dirvish
 let g:dirvish_mode = ':sort ,^.*[\/],'
-
-autocmd vimrc FileType dirvish call fugitive#detect(@%) " Enable fugitive's :Gstatus
 
 " vim-signify
 let g:signify_vcs_list = [ 'git' ]
