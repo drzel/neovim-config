@@ -137,7 +137,6 @@ Plug 'pbrisbin/vim-mkdir'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'ckarnell/history-traverse'
-Plug 'benwainwright/fzf-project'
 
 " Search
 Plug 'romainl/vim-cool'
@@ -170,8 +169,6 @@ call plug#end()
 
 " fzf
 let g:fzf_preview_window = ''
-let g:fzfSwitchProjectWorkspaces = ['~/Workspace/FortressOne', '~/TappyDays', '~/Mozo']
-let g:fzfSwitchProjectAlwaysChooseFile = 0
 
 " vim-ruby
 let g:ruby_indent_access_modifier_style='normal'
@@ -183,7 +180,6 @@ let g:markdown_fenced_languages = ['javascript', 'ruby']
 let g:vim_json_syntax_conceal = 0
 
 " vim-lightline
-
 let g:lightline = {
       \   'colorscheme': 'gruvbox',
       \ }
@@ -361,7 +357,6 @@ nnoremap <leader>fC :BCommits<CR>
 nnoremap <leader>ft :Tags<CR>
 nnoremap <leader>fT :BTags<CR>
 nnoremap <leader>fh :History<CR>
-nnoremap <leader>fp :FzfSwitchProject<CR>
 
 " vim-rspec
 map <leader>rt :call RunCurrentSpecFile()<CR>
