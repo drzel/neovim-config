@@ -180,43 +180,33 @@ let g:markdown_fenced_languages = ['javascript', 'ruby']
 let g:vim_json_syntax_conceal = 0
 
 " vim-lightline
+" default config: https://github.com/itchyny/lightline.vim/blob/master/autoload/lightline.vim
+" default components: :help g:lightline.component
+
+function! CwdBasename()
+  return substitute(getcwd(), '^.*/', '', '')
+endfunction
+
+function! LightlineModified()
+  return &modified ? ' +' : ''
+endfunction
+
 let g:lightline = {
       \   'colorscheme': 'gruvbox',
-      \ }
-
-let g:lightline.component = {
-      \   'indicator': '%{LineNoIndicator()}'
-      \ }
-
-let g:lightline.active = {
-      \   'left': [
-      \     [ 'mode', 'paste' ],
-      \     [ 'readonly', 'relativepath', 'modified' ]
-      \   ],
-      \   'right': [
-      \     [ 'indicator' ],
-      \     [ 'lineinfo' ]
-      \   ]
-      \ }
-
-let g:lightline.inactive = {
-      \   'left': [
-      \     [],
-      \     [ 'relativepath' ]
-      \   ],
-      \   'right': [
-      \     [],
-      \     []
-      \   ]
-      \ }
-
-let g:lightline.tabline = {
-      \   'left': [
-      \     [ 'tabs' ]
-      \   ],
-      \   'right': [
-      \     [ 'close' ]
-      \   ]
+      \   'component': {
+      \     'll_relativepath': '%f%{LightlineModified()}'
+      \   },
+      \   'component_function': {
+      \     'cwd_basename': 'CwdBasename'
+      \   },
+      \   'active': {
+      \     'left': [['mode', 'paste'], ['cwd_basename'], [], ['ll_relativepath']],
+      \     'right': [[], ['percent'], ['filetype']]
+      \   },
+      \   'inactive': {
+      \     'left': [['ll_relativepath']],
+      \     'right': [['lineinfo'], ['percent']]
+      \   }
       \ }
 
 " ale
