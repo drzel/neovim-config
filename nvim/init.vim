@@ -261,7 +261,8 @@ set smartcase
 set inccommand=nosplit
 
 " Define tab and newline chars with set list
-set listchars=tab:→\ ,trail:·,eol:¬,extends:…,precedes:…
+set list
+set listchars=tab:→\ ,trail:·,extends:…,precedes:…
 
 " Keep undo history
 set undofile
@@ -316,9 +317,6 @@ nnoremap <leader>yf :let @" = expand("%")<CR>
 
 " vim-unimpaired
 " see :help unimpaired
-
-" vim-gitgutter
-" see :help gitgutter
 
 " ale
 nnoremap <leader>l :ALEToggle<CR>
