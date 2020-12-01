@@ -174,15 +174,15 @@ let g:vim_json_syntax_conceal = 0
 " default config: https://github.com/itchyny/lightline.vim/blob/master/autoload/lightline.vim
 " default components: :help g:lightline.component
 
-function! CwdBasename()
+function! CwdBasename() abort
   return substitute(getcwd(), '^.*/', '', '')
 endfunction
 
-function! LightlineModified()
+function! LightlineModified() abort
   return &modified ? ' +' : ''
 endfunction
 
-function! LightlineFiletype()
+function! LightlineFiletype() abort
   return strlen(&filetype) ? WebDevIconsGetFileTypeSymbol() : 'no ft'
 endfunction
 
@@ -228,10 +228,6 @@ let g:table_mode_corner='|'
 " indentLine
 let g:indentLine_char = '▏'
 let g:indentLine_enabled = 0
-
-" csv
-let g:csv_nomap_h = 1
-let g:csv_nomap_l = 1
 
 
 " ============
@@ -329,19 +325,13 @@ nnoremap <leader>ft :Tags<CR>
 nnoremap <leader>fT :BTags<CR>
 nnoremap <leader>fh :History<CR>
 
-" vim-rspec
-map <leader>rt :call RunCurrentSpecFile()<CR>
-map <leader>rs :call RunNearestSpec()<CR>
-map <leader>rl :call RunLastSpec()<CR>
-map <leader>ra :call RunAllSpecs()<CR>
-
 " vim-grepper
 nnoremap <leader>gf :Grepper -tool grep<CR>
 nnoremap <leader>gg :Grepper -tool git<CR>
 
 " vim-easy-align
-xmap ga <Plug>(EasyAlign)
-nmap ga <Plug>(EasyAlign)
+xnoremap ga <Plug>(EasyAlign)
+nnoremap ga <Plug>(EasyAlign)
 
 " indentLine
 nnoremap <leader>i :IndentLinesToggle<CR>
@@ -372,7 +362,7 @@ command! -range -nargs=0 Underline       call s:CombineSelection(<line1>, <line2
 command! -range -nargs=0 DoubleUnderline call s:CombineSelection(<line1>, <line2>, '0333')
 command! -range -nargs=0 Strikethrough   call s:CombineSelection(<line1>, <line2>, '0336')
 
-function! s:CombineSelection(line1, line2, cp)
+function! s:CombineSelection(line1, line2, cp) abort
   execute 'let char = "\u'.a:cp.'"'
   execute a:line1.','.a:line2.'s/\%V[^[:cntrl:]]/&'.char.'/ge'
 endfunction
@@ -394,9 +384,9 @@ set termguicolors
 " let g:material_theme_style = 'palenight'
 " let g:material_terminal_italics = 1
 
+" Colorscheme
 set background=dark
-
 autocmd vimrc VimEnter * ++nested colorscheme gruvbox
 
 " Colorscheme overrides
-highlight VertSplit guibg=bg
+autocmd vimrc ColorScheme * highlight VertSplit guibg=bg
