@@ -44,7 +44,6 @@ Plug 'tpope/vim-rsi'
 " Utilities
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-repeat'
-" Plug 'drzel/vim-scrolloff-fraction'
 
 " Grep
 Plug 'mhinz/vim-grepper'
@@ -80,9 +79,6 @@ Plug 'mxw/vim-jsx'
 
 " JSON
 Plug 'elzr/vim-json'
-
-" CSV
-" Plug 'chrisbra/csv.vim'
 
 " nginx
 Plug 'chr4/nginx.vim'
@@ -150,13 +146,6 @@ Plug 'ludovicchabant/vim-gutentags'
 " Indent guides
 Plug 'Yggdroot/indentLine'
 
-" Documentation
-if has('macunix')
-  Plug 'rizzatti/dash.vim'
-elseif has('unix')
-  Plug 'KabbAmine/zeavim.vim'
-endif
-
 " Cosmetic (devicons must load last)
 Plug 'ryanoasis/vim-devicons'
 
@@ -211,8 +200,6 @@ let g:lightline = {
 
 " ale
 let g:ale_enabled = 0
-" let g:ale_sign_error = '❌'
-" let g:ale_sign_warning = '❕'
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_enter = 0
 
@@ -234,10 +221,6 @@ let g:history_max_len = 1000
 
 " vim-table-mode
 let g:table_mode_corner='|'
-
-" vim-devicons
-" let g:webdevicons_enable_airline_tabline = 0
-" let g:webdevicons_enable_airline_statusline = 0
 
 " indentLine
 let g:indentLine_char = '▏'
@@ -405,19 +388,16 @@ endfunction
 set termguicolors
 
 " Nord
-let g:nord_italic = 1
-let g:nord_italic_comments = 1
-let g:nord_uniform_diff_background = 1
+" let g:nord_italic = 1
+" let g:nord_italic_comments = 1
+" let g:nord_uniform_diff_background = 1
 
 " Material
-let g:material_theme_style = 'palenight'
-let g:material_terminal_italics = 1
-" let g:airline_theme = 'material'
+" let g:material_theme_style = 'palenight'
+" let g:material_terminal_italics = 1
 
 set background=dark
 
-" silent! colorscheme material 
-" silent! colorscheme base16-tomorrow-night
 autocmd vimenter * ++nested colorscheme gruvbox
 
 " Colorscheme overrides
