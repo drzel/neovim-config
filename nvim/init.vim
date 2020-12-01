@@ -18,6 +18,7 @@ if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
   augroup vim-plug
+    autocmd!
     autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
   augroup END
 endif
@@ -208,6 +209,7 @@ let g:rspec_command = 'Dispatch bundle exec rspec {spec}'
 
 " vim-dirvish
 let g:dirvish_mode = ':sort ,^.*[\/],'
+
 augroup dirvish
   autocmd!
   autocmd FileType dirvish call fugitive#detect(@%) " Enable fugitive's :Gstatus
@@ -398,7 +400,10 @@ set termguicolors
 
 set background=dark
 
-autocmd vimenter * ++nested colorscheme gruvbox
+augroup colourscheme
+  autocmd!
+  autocmd VimEnter * ++nested colorscheme gruvbox
+augroup END
 
 " Colorscheme overrides
 highlight VertSplit guibg=bg
