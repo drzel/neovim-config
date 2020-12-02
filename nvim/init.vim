@@ -169,26 +169,33 @@ function! CwdBasename() abort
   return substitute(getcwd(), '^.*/', '', '')
 endfunction
 
-function! LightlineModified() abort
-  return &modified ? ' +' : ''
-endfunction
+function! LightlineRelativepath() abort
+  let l:ary = []
 
-function! LightlineFiletype() abort
-  return strlen(&filetype) ? WebDevIconsGetFileTypeSymbol() : 'no ft'
+  if strlen(&filetype)
+    let l:ary += [WebDevIconsGetFileTypeSymbol()]
+  else
+    let l:ary += ['no ft']
+  endif
+
+  let l:ary += [expand('%f')]
+
+  if &modified
+    let l:ary += ['+']
+  endif
+
+  return join(l:ary, ' ')
 endfunction
 
 let g:lightline = {
       \   'colorscheme': 'gruvbox',
-      \   'component': {
-      \     'll_relativepath': '%f%{LightlineModified()}'
-      \   },
       \   'component_function': {
       \     'cwd_basename': 'CwdBasename',
-      \     'll_filetype': 'LightlineFiletype'
+      \     'll_relativepath': 'LightlineRelativepath'
       \   },
       \   'active': {
       \     'left': [['mode', 'paste'], ['cwd_basename'], [], ['ll_relativepath']],
-      \     'right': [['lineinfo'], ['percent'], ['ll_filetype']]
+      \     'right': [['lineinfo'], [], ['percent']]
       \   },
       \   'inactive': {
       \     'left': [['ll_relativepath']],
