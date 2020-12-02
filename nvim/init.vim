@@ -1,5 +1,5 @@
-" - Dependencies: git, python2, python3, ruby, npm, ctags, rbenv, rubocop,
-"     vint, bat
+" - Dependencies: vim-plug, git, python2, python3, ruby, npm, ctags, rbenv,
+"     rubocop, vint, bat
 " - To generate tags for gems:
 "       ```
 "       gem install gem-ctags
@@ -15,15 +15,6 @@ augroup vimrc
   autocmd!
 augroup END
 
-
-" Install vim-plug
-if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
-  silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
-  autocmd vimrc VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
-
 scriptencoding utf-8
 
 
@@ -31,7 +22,7 @@ scriptencoding utf-8
 " Plugins
 " =======
 
-call plug#begin('~/.local/share/nvim/plugged')
+call plug#begin(stdpath("data") . '/plugged')
 
 " Linting
 Plug 'w0rp/ale'
@@ -234,7 +225,7 @@ let g:indentLine_enabled = 0
 " Vim settings
 " ============
 
-" Always show status line
+" Don't show mode message
 set noshowmode
 
 " Show line numbers
