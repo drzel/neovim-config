@@ -188,7 +188,7 @@ let g:lightline = {
       \   },
       \   'active': {
       \     'left': [['mode', 'paste'], ['cwd_basename'], [], ['ll_relativepath']],
-      \     'right': [[], ['percent'], ['ll_filetype']]
+      \     'right': [['lineinfo'], ['percent'], ['ll_filetype']]
       \   },
       \   'inactive': {
       \     'left': [['ll_relativepath']],
