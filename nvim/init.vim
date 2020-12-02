@@ -275,13 +275,6 @@ set backupskip+=/private/tmp/*
 set fillchars+=vert:│
 
 
-" =========
-" Filetypes
-" =========
-
-autocmd vimrc BufNewFile,BufRead .env.* setfiletype sh
-
-
 " ========
 " Key maps
 " ========
