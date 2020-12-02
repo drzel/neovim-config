@@ -232,53 +232,22 @@ let g:indentLine_enabled = 0
 " Vim settings
 " ============
 
-" Don't show mode message
 set noshowmode
-
-" Show line numbers
 set number
-
-" Don't wrap text by default
 set nowrap
-
-" Enable backgrounding of unsaved buffers
 set hidden
-
-" Enable mouse
 set mouse=a
-
-" Search not case-sensitive when only lower-case chars used
 set incsearch
 set ignorecase
 set smartcase
-
-" Show incremental results
 set inccommand=nosplit
-
-" Define tab and newline chars with set list
 set list
 set listchars=tab:→\ ,trail:·,extends:…,precedes:…
-
-" Keep undo history
 set undofile
-
-" Open splits below and vertical splits to the right
 set splitbelow
 set splitright
-
-" Two space indent
-set shiftwidth=2
-let &softtabstop = &shiftwidth
-set expandtab
-
-" readline like command autocompletion
 set wildmode=longest,list,full
 set wildmenu
-
-" Allow `crontab -e` on Mac OS
-set backupskip+=/private/tmp/*
-
-" Vertical split character
 set fillchars+=vert:│
 
 
