@@ -286,7 +286,7 @@ nnoremap <leader>c :edit $MYVIMRC<CR>
 nnoremap <leader>s :set spell!<CR>
 
 " Copy filename
-nnoremap <leader>yf :let @" = expand("%")<CR>
+nnoremap <leader>yf :let @" = @%<CR>
 
 
 " ===============
