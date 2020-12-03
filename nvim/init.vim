@@ -286,8 +286,9 @@ nnoremap <leader>fT :BTags<CR>
 nnoremap <leader>fh :History<CR>
 
 " vim-grepper
-nnoremap <leader>gf :Grepper -tool grep<CR>
-nnoremap <leader>gg :Grepper -tool git<CR>
+nnoremap <leader>gg :Grepper -tool rg -grepprg rg -H --no-heading --vimgrep -e<CR>
+nnoremap <leader>gf :Grepper -tool rg -grepprg rg -H --no-heading --vimgrep --no-ignore -e<CR>
+nnoremap <leader>ga :Grepper -tool rg -grepprg rg -H --no-heading --vimgrep --no-ignore --hidden -e<CR>
 
 " vim-easy-align
 xnoremap ga <Plug>(EasyAlign)
