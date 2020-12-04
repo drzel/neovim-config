@@ -1,5 +1,5 @@
 " - Dependencies: vim-plug, git, python2, python3, ruby, npm, ctags, rbenv,
-"     rubocop, vint, bat
+"     rubocop, vint, bat, ripgrep
 " - To generate tags for gems:
 "       ```
 "       gem install gem-ctags
@@ -200,8 +200,22 @@ let g:lightline = {
       \   'inactive': {
       \     'left': [['ll_relativepath']],
       \     'right': [['lineinfo'], ['percent']]
-      \   }
+      \   },
+      \   'mode_map': {
+      \     'n': 'N',
+      \     'i': 'I',
+      \     'R': 'R',
+      \     'v': 'V',
+      \     'V': 'VL',
+      \     "\<C-v>": 'VB',
+      \     'c': 'C',
+      \     's': 'S',
+      \     'S': 'SL',
+      \     "\<C-s>": 'SB',
+      \     't': 'T'
+      \   },
       \ }
+
 
 " ale
 let g:ale_enabled = 0
@@ -329,6 +343,24 @@ function! s:CombineSelection(line1, line2, cp) abort
 endfunction
 
 
+" <C-j> and <C-k> to scroll page without cursor
+function! s:Saving_scroll(cmd)
+  let save_scroll = &scroll
+  execute 'normal! ' . a:cmd
+  let &scroll = save_scroll
+endfunction
+
+nnoremap <silent> <C-J> :call <SID>Saving_scroll("1<C-V><C-D>")<CR>
+vnoremap <silent> <C-J> <Esc>:call <SID>Saving_scroll("gv1<C-V><C-D>")<CR>
+nnoremap <silent> <C-K> :call <SID>Saving_scroll("1<C-V><C-U>")<CR>
+vnoremap <silent> <C-K> <Esc>:call <SID>Saving_scroll("gv1<C-V><C-U>")<CR>
+
+
+" Show cursorline in insert mode
+autocmd vimrc InsertEnter * set cursorline
+autocmd vimrc InsertLeave * set nocursorline
+
+
 " =====
 " Color
 " =====
@@ -351,3 +383,9 @@ autocmd vimrc VimEnter * ++nested colorscheme gruvbox
 
 " Colorscheme overrides
 autocmd vimrc ColorScheme * highlight VertSplit guibg=bg
+autocmd vimrc ColorScheme * highlight SignColumn guibg=bg
+autocmd vimrc ColorScheme * highlight SignifySignAdd guibg=bg
+autocmd vimrc ColorScheme * highlight SignifySignChange guibg=bg
+autocmd vimrc ColorScheme * highlight SignifySignDelete guibg=bg
+autocmd vimrc ColorScheme * highlight SignifySignDeleteFirstLine guibg=bg
+autocmd vimrc ColorScheme * highlight ALESignColumnWithErrors guibg=bg
