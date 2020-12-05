@@ -33,6 +33,7 @@ Plug 'ajh17/VimCompletesMe'
 " Keymappings
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-rsi'
+Plug 'drzel/vim-scroll-in-place'
 
 " Utilities
 Plug 'tpope/vim-dispatch'
@@ -341,19 +342,6 @@ function! s:CombineSelection(line1, line2, cp) abort
   execute 'let char = "\u'.a:cp.'"'
   execute a:line1.','.a:line2.'s/\%V[^[:cntrl:]]/&'.char.'/ge'
 endfunction
-
-
-" <C-j> and <C-k> to scroll page without cursor
-function! s:Saving_scroll(cmd)
-  let save_scroll = &scroll
-  execute 'normal! ' . a:cmd
-  let &scroll = save_scroll
-endfunction
-
-nnoremap <silent> <C-J> :call <SID>Saving_scroll("1<C-V><C-D>")<CR>
-vnoremap <silent> <C-J> <Esc>:call <SID>Saving_scroll("gv1<C-V><C-D>")<CR>
-nnoremap <silent> <C-K> :call <SID>Saving_scroll("1<C-V><C-U>")<CR>
-vnoremap <silent> <C-K> <Esc>:call <SID>Saving_scroll("gv1<C-V><C-U>")<CR>
 
 
 " Show cursorline in insert mode
