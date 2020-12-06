@@ -166,20 +166,14 @@ let g:vim_json_syntax_conceal = 0
 " default config: https://github.com/itchyny/lightline.vim/blob/master/autoload/lightline.vim
 " default components: :help g:lightline.component
 
-function! CwdBasename() abort
-  return substitute(getcwd(), '^.*/', '', '')
-endfunction
-
 function! LightlineRelativepath() abort
   let l:ary = []
 
   if strlen(&filetype)
     let l:ary += [WebDevIconsGetFileTypeSymbol()]
-  else
-    let l:ary += ['no ft']
   endif
 
-  let l:ary += [expand('%f')]
+  let l:ary += [fnamemodify(expand('%'), ':~:.')]
 
   if &modified
     let l:ary += ['+']
@@ -191,11 +185,11 @@ endfunction
 let g:lightline = {
       \   'colorscheme': 'gruvbox',
       \   'component_function': {
-      \     'cwd_basename': 'CwdBasename',
+      \     'fugitive_statusline': 'FugitiveHead',
       \     'll_relativepath': 'LightlineRelativepath'
       \   },
       \   'active': {
-      \     'left': [['mode', 'paste'], ['cwd_basename'], [], ['ll_relativepath']],
+      \     'left': [['mode', 'paste'], ['fugitive_statusline'], [], ['ll_relativepath']],
       \     'right': [['lineinfo'], [], ['percent']]
       \   },
       \   'inactive': {
@@ -264,6 +258,12 @@ set splitright
 set wildmode=longest,list,full
 set wildmenu
 set fillchars+=vert:│
+
+function! Title() abort
+  return fnamemodify(getcwd(), ':~')
+endfunction
+
+set titlestring=%{Title()}
 
 
 " ========
