@@ -194,7 +194,7 @@ let g:lightline = {
       \   },
       \   'inactive': {
       \     'left': [['ll_relativepath']],
-      \     'right': [['lineinfo'], ['percent']]
+      \     'right': []
       \   },
       \   'mode_map': {
       \     'n': 'N',
@@ -208,7 +208,7 @@ let g:lightline = {
       \     'S': 'SL',
       \     "\<C-s>": 'SB',
       \     't': 'T'
-      \   },
+      \   }
       \ }
 
 
