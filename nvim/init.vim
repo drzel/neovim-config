@@ -179,18 +179,32 @@ function! LightlineRelativepath() abort
     let l:ary += ['+']
   endif
 
+  if strlen(gutentags#statusline())
+    let l:ary += [gutentags#statusline()]
+  endif
+
   return join(l:ary, ' ')
 endfunction
+
+function! GitBranch() abort
+  if FugitiveHead() != ''
+    return ' ' . FugitiveHead()
+  else
+    return ''
+  endif
+endfunction
+
 
 let g:lightline = {
       \   'colorscheme': 'gruvbox',
       \   'component_function': {
-      \     'fugitive_statusline': 'FugitiveHead',
-      \     'll_relativepath': 'LightlineRelativepath'
+      \     'fugitive_statusline': 'GitBranch',
+      \     'll_relativepath': 'LightlineRelativepath',
+      \     'line_no_indicator': 'LineNoIndicator'
       \   },
       \   'active': {
       \     'left': [['mode', 'paste'], ['fugitive_statusline'], [], ['ll_relativepath']],
-      \     'right': [['lineinfo'], [], ['percent']]
+      \     'right': [['lineinfo'], [], ['line_no_indicator']]
       \   },
       \   'inactive': {
       \     'left': [['ll_relativepath']],
