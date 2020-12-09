@@ -187,13 +187,12 @@ function! LightlineRelativepath() abort
 endfunction
 
 function! GitBranch() abort
-  if FugitiveHead() != ''
+  if FugitiveHead() !=# ''
     return ' ' . FugitiveHead()
   else
     return ''
   endif
 endfunction
-
 
 let g:lightline = {
       \   'colorscheme': 'gruvbox',
@@ -390,4 +389,3 @@ autocmd vimrc ColorScheme * highlight SignifySignAdd guibg=bg
 autocmd vimrc ColorScheme * highlight SignifySignChange guibg=bg
 autocmd vimrc ColorScheme * highlight SignifySignDelete guibg=bg
 autocmd vimrc ColorScheme * highlight SignifySignDeleteFirstLine guibg=bg
-autocmd vimrc ColorScheme * highlight ALESignColumnWithErrors guibg=bg
