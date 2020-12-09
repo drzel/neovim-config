@@ -12,7 +12,7 @@
 " - Restart vim
 
 augroup vimrc
-  autocmd!
+	autocmd!
 augroup END
 
 scriptencoding utf-8
@@ -80,7 +80,7 @@ Plug 'chr4/nginx.vim'
 " tmux
 Plug 'tmux-plugins/vim-tmux'
 
-" " Statusline
+" Statusline
 Plug 'itchyny/lightline.vim'
 
 " Git
@@ -167,62 +167,62 @@ let g:vim_json_syntax_conceal = 0
 " default components: :help g:lightline.component
 
 function! LightlineRelativepath() abort
-  let l:ary = []
+	let l:ary = []
 
-  if strlen(&filetype)
-    let l:ary += [WebDevIconsGetFileTypeSymbol()]
-  endif
+	if strlen(&filetype)
+		let l:ary += [WebDevIconsGetFileTypeSymbol()]
+	endif
 
-  let l:ary += [fnamemodify(expand('%'), ':~:.')]
+	let l:ary += [fnamemodify(expand('%'), ':~:.')]
 
-  if &modified
-    let l:ary += ['+']
-  endif
+	if &modified
+		let l:ary += ['+']
+	endif
 
-  if strlen(gutentags#statusline())
-    let l:ary += [gutentags#statusline()]
-  endif
+	if strlen(gutentags#statusline())
+		let l:ary += [gutentags#statusline()]
+	endif
 
-  return join(l:ary, ' ')
+	return join(l:ary, ' ')
 endfunction
 
 function! GitBranch() abort
-  if FugitiveHead() !=# ''
-    return ' ' . FugitiveHead()
-  else
-    return ''
-  endif
+	if FugitiveHead() !=# ''
+		return ' ' . FugitiveHead()
+	else
+		return ''
+	endif
 endfunction
 
 let g:lightline = {
-      \   'colorscheme': 'gruvbox',
-      \   'component_function': {
-      \     'fugitive_statusline': 'GitBranch',
-      \     'll_relativepath': 'LightlineRelativepath',
-      \     'line_no_indicator': 'LineNoIndicator'
-      \   },
-      \   'active': {
-      \     'left': [['mode', 'paste'], ['fugitive_statusline'], [], ['ll_relativepath']],
-      \     'right': [['lineinfo'], [], ['line_no_indicator']]
-      \   },
-      \   'inactive': {
-      \     'left': [['ll_relativepath']],
-      \     'right': []
-      \   },
-      \   'mode_map': {
-      \     'n': 'N',
-      \     'i': 'I',
-      \     'R': 'R',
-      \     'v': 'V',
-      \     'V': 'VL',
-      \     "\<C-v>": 'VB',
-      \     'c': 'C',
-      \     's': 'S',
-      \     'S': 'SL',
-      \     "\<C-s>": 'SB',
-      \     't': 'T'
-      \   }
-      \ }
+			\   'colorscheme': 'gruvbox',
+			\   'component_function': {
+			\     'fugitive_statusline': 'GitBranch',
+			\     'll_relativepath': 'LightlineRelativepath',
+			\     'line_no_indicator': 'LineNoIndicator'
+			\   },
+			\   'active': {
+			\     'left': [['mode', 'paste'], ['fugitive_statusline'], [], ['ll_relativepath']],
+			\     'right': [['lineinfo'], [], ['line_no_indicator']]
+			\   },
+			\   'inactive': {
+			\     'left': [['ll_relativepath']],
+			\     'right': []
+			\   },
+			\   'mode_map': {
+			\     'n': 'N',
+			\     'i': 'I',
+			\     'R': 'R',
+			\     'v': 'V',
+			\     'V': 'VL',
+			\     "\<C-v>": 'VB',
+			\     'c': 'C',
+			\     's': 'S',
+			\     'S': 'SL',
+			\     "\<C-s>": 'SB',
+			\     't': 'T'
+			\   }
+			\ }
 
 
 " ale
@@ -272,8 +272,12 @@ set wildmode=longest,list,full
 set wildmenu
 set fillchars+=vert:│
 
+set noexpandtab
+set tabstop=4 shiftwidth=4
+set autoindent
+
 function! Title() abort
-  return fnamemodify(getcwd(), ':~')
+	return fnamemodify(getcwd(), ':~')
 endfunction
 
 set titlestring=%{Title()}
@@ -352,8 +356,8 @@ command! -range -nargs=0 DoubleUnderline call s:CombineSelection(<line1>, <line2
 command! -range -nargs=0 Strikethrough   call s:CombineSelection(<line1>, <line2>, '0336')
 
 function! s:CombineSelection(line1, line2, cp) abort
-  execute 'let char = "\u'.a:cp.'"'
-  execute a:line1.','.a:line2.'s/\%V[^[:cntrl:]]/&'.char.'/ge'
+	execute 'let char = "\u'.a:cp.'"'
+	execute a:line1.','.a:line2.'s/\%V[^[:cntrl:]]/&'.char.'/ge'
 endfunction
 
 
