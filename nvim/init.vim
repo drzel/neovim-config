@@ -118,7 +118,7 @@ Plug 'tpope/vim-commentary'
 " File navigation
 Plug 'justinmk/vim-dirvish'
 Plug 'pbrisbin/vim-mkdir'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'ckarnell/history-traverse'
 
