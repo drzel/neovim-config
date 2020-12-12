@@ -45,9 +45,6 @@ Plug 'mhinz/vim-grepper'
 " Unix
 Plug 'tpope/vim-eunuch'
 
-" Ansible
-Plug 'pearofducks/ansible-vim'
-
 " Git
 Plug 'tpope/vim-git'
 
@@ -97,9 +94,6 @@ Plug 'tpope/vim-markdown'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 
 " Colorschemes
-Plug 'arcticicestudio/nord-vim', { 'branch': 'develop' }
-Plug 'kaicataldo/material.vim'
-Plug 'chriskempson/base16-vim'
 Plug 'morhetz/gruvbox'
 Plug 'shinchu/lightline-gruvbox.vim'
 
@@ -379,15 +373,6 @@ autocmd vimrc InsertLeave * set nocursorline
 
 " 24-bit color
 set termguicolors
-
-" Nord
-" let g:nord_italic = 1
-" let g:nord_italic_comments = 1
-" let g:nord_uniform_diff_background = 1
-
-" Material
-" let g:material_theme_style = 'palenight'
-" let g:material_terminal_italics = 1
 
 " Colorscheme
 set background=dark
