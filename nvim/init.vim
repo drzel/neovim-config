@@ -163,10 +163,10 @@ let g:markdown_fenced_languages = ['javascript', 'ruby']
 let g:vim_json_syntax_conceal = 0
 
 " vim-lightline
-" default config: https://github.com/itchyny/lightline.vim/blob/master/autoload/lightline.vim
+" default config: :help lightline-option
 " default components: :help g:lightline.component
 
-function! LightlineRelativepath() abort
+function! LightLineFileStatus() abort
 	let l:ary = []
 
 	if strlen(&filetype)
@@ -174,6 +174,10 @@ function! LightlineRelativepath() abort
 	endif
 
 	let l:ary += [fnamemodify(expand('%'), ':~:.')]
+
+	if &readonly
+		let l:ary += ['']
+	endif
 
 	if &modified
 		let l:ary += ['+']
@@ -194,19 +198,22 @@ function! GitBranch() abort
 	endif
 endfunction
 
+function! LightLineReadonly() abort
+endfunction
+
 let g:lightline = {
 			\   'colorscheme': 'gruvbox',
 			\   'component_function': {
 			\     'fugitive_statusline': 'GitBranch',
-			\     'll_relativepath': 'LightlineRelativepath',
+			\     'll_filestatus': 'LightLineFileStatus',
 			\     'line_no_indicator': 'LineNoIndicator'
 			\   },
 			\   'active': {
-			\     'left': [['mode', 'paste'], ['fugitive_statusline'], [], ['ll_relativepath']],
+			\     'left': [['mode', 'paste'], ['fugitive_statusline'], ['ll_filestatus']],
 			\     'right': [['lineinfo'], [], ['line_no_indicator']]
 			\   },
 			\   'inactive': {
-			\     'left': [['ll_relativepath']],
+			\     'left': [['ll_filestatus']],
 			\     'right': []
 			\   },
 			\   'mode_map': {
