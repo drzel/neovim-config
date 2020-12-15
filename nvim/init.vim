@@ -69,7 +69,8 @@ Plug 'FortressOne/quakec.vim'
 
 " Javascript
 Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
+Plug 'yuezk/vim-js'
+Plug 'maxmellon/vim-jsx-pretty'
 
 " JSON
 Plug 'elzr/vim-json'
