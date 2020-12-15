@@ -22,7 +22,7 @@ scriptencoding utf-8
 " Plugins
 " =======
 
-call plug#begin(stdpath("data") . '/plugged')
+call plug#begin(stdpath('data') . '/plugged')
 
 " Linting
 Plug 'w0rp/ale'
@@ -44,9 +44,6 @@ Plug 'mhinz/vim-grepper'
 
 " Unix
 Plug 'tpope/vim-eunuch'
-
-" Ansible
-Plug 'pearofducks/ansible-vim'
 
 " Git
 Plug 'tpope/vim-git'
@@ -83,6 +80,7 @@ Plug 'tmux-plugins/vim-tmux'
 
 " Statusline
 Plug 'itchyny/lightline.vim'
+Plug 'maximbaz/lightline-ale'
 
 " Git
 Plug 'tpope/vim-git'
@@ -98,9 +96,6 @@ Plug 'tpope/vim-markdown'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 
 " Colorschemes
-Plug 'arcticicestudio/nord-vim', { 'branch': 'develop' }
-Plug 'kaicataldo/material.vim'
-Plug 'chriskempson/base16-vim'
 Plug 'morhetz/gruvbox'
 Plug 'shinchu/lightline-gruvbox.vim'
 
@@ -125,7 +120,7 @@ Plug 'tpope/vim-commentary'
 " File navigation
 Plug 'justinmk/vim-dirvish'
 Plug 'pbrisbin/vim-mkdir'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'ckarnell/history-traverse'
 
@@ -164,10 +159,10 @@ let g:markdown_fenced_languages = ['javascript', 'ruby']
 let g:vim_json_syntax_conceal = 0
 
 " vim-lightline
-" default config: https://github.com/itchyny/lightline.vim/blob/master/autoload/lightline.vim
+" default config: :help lightline-option
 " default components: :help g:lightline.component
 
-function! LightlineRelativepath() abort
+function! LightLineFileStatus() abort
 	let l:ary = []
 
 	if strlen(&filetype)
@@ -175,6 +170,10 @@ function! LightlineRelativepath() abort
 	endif
 
 	let l:ary += [fnamemodify(expand('%'), ':~:.')]
+
+	if &readonly
+		let l:ary += ['']
+	endif
 
 	if &modified
 		let l:ary += ['+']
@@ -195,19 +194,38 @@ function! GitBranch() abort
 	endif
 endfunction
 
+function! LightLineReadonly() abort
+endfunction
+
 let g:lightline = {
 			\   'colorscheme': 'gruvbox',
+			\   'separator': { 'left': '', 'right': '' },
+			\   'subseparator': { 'left': '|', 'right': '|' },
 			\   'component_function': {
 			\     'fugitive_statusline': 'GitBranch',
-			\     'll_relativepath': 'LightlineRelativepath',
+			\     'll_filestatus': 'LightLineFileStatus',
 			\     'line_no_indicator': 'LineNoIndicator'
 			\   },
+			\   'component_expand': {
+			\     'linter_checking': 'lightline#ale#checking',
+			\     'linter_infos': 'lightline#ale#infos',
+			\     'linter_warnings': 'lightline#ale#warnings',
+			\     'linter_errors': 'lightline#ale#errors',
+			\     'linter_ok': 'lightline#ale#ok',
+			\   },
+			\   'component_type': {
+			\     'linter_checking': 'right',
+			\     'linter_infos': 'right',
+			\     'linter_warnings': 'warning',
+			\     'linter_errors': 'error',
+			\     'linter_ok': 'right',
+			\   },
 			\   'active': {
-			\     'left': [['mode', 'paste'], ['fugitive_statusline'], [], ['ll_relativepath']],
-			\     'right': [['lineinfo'], [], ['line_no_indicator']]
+			\     'left': [['mode', 'paste'], ['fugitive_statusline'], ['ll_filestatus']],
+			\     'right': [[ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_ok' ], ['lineinfo'], ['line_no_indicator']]
 			\   },
 			\   'inactive': {
-			\     'left': [['ll_relativepath']],
+			\     'left': [['ll_filestatus']],
 			\     'right': []
 			\   },
 			\   'mode_map': {
@@ -225,6 +243,12 @@ let g:lightline = {
 			\   }
 			\ }
 
+" lightline-ale
+let g:lightline#ale#indicator_checking = "\uf110"
+let g:lightline#ale#indicator_infos = "\uf129"
+let g:lightline#ale#indicator_warnings = "\uf071"
+let g:lightline#ale#indicator_errors = "\uf05e"
+let g:lightline#ale#indicator_ok = "\uf00c"
 
 " ale
 let g:ale_enabled = 0
@@ -350,18 +374,6 @@ nnoremap L :HisTravForward<CR>
 " Scripts
 " =======
 
-" modify selected text using combining diacritics
-command! -range -nargs=0 Overline        call s:CombineSelection(<line1>, <line2>, '0305')
-command! -range -nargs=0 Underline       call s:CombineSelection(<line1>, <line2>, '0332')
-command! -range -nargs=0 DoubleUnderline call s:CombineSelection(<line1>, <line2>, '0333')
-command! -range -nargs=0 Strikethrough   call s:CombineSelection(<line1>, <line2>, '0336')
-
-function! s:CombineSelection(line1, line2, cp) abort
-	execute 'let char = "\u'.a:cp.'"'
-	execute a:line1.','.a:line2.'s/\%V[^[:cntrl:]]/&'.char.'/ge'
-endfunction
-
-
 " Show cursorline in insert mode
 autocmd vimrc InsertEnter * set cursorline
 autocmd vimrc InsertLeave * set nocursorline
@@ -373,15 +385,6 @@ autocmd vimrc InsertLeave * set nocursorline
 
 " 24-bit color
 set termguicolors
-
-" Nord
-" let g:nord_italic = 1
-" let g:nord_italic_comments = 1
-" let g:nord_uniform_diff_background = 1
-
-" Material
-" let g:material_theme_style = 'palenight'
-" let g:material_terminal_italics = 1
 
 " Colorscheme
 set background=dark
