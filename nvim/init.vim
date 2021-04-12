@@ -341,11 +341,11 @@ nnoremap <leader>fC :BCommits<CR>
 nnoremap <leader>ft :Tags<CR>
 nnoremap <leader>fT :BTags<CR>
 nnoremap <leader>fh :History<CR>
+nnoremap <leader>fr :Rg<CR>
 
 " vim-grepper
-nnoremap <leader>gg :Grepper -tool rg -grepprg rg -H --no-heading --vimgrep -e<CR>
-nnoremap <leader>gf :Grepper -tool rg -grepprg rg -H --no-heading --vimgrep --no-ignore -e<CR>
-nnoremap <leader>ga :Grepper -tool rg -grepprg rg -H --no-heading --vimgrep --no-ignore --hidden -e<CR>
+nnoremap <leader>gg :Grepper -tool rg -grepprg rg -H --no-heading --vimgrep --smart-case -e<CR>
+nnoremap <leader>gf :Grepper -tool rg -grepprg rg -H --no-heading --vimgrep --smart-case --no-ignore --hidden -e<CR>
 
 " vim-easy-align
 xnoremap ga <Plug>(EasyAlign)
