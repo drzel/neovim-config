@@ -296,6 +296,7 @@ set splitright
 set wildmode=longest,list,full
 set wildmenu
 set fillchars+=vert:│
+set sidescrolloff=20
 
 set noexpandtab
 set tabstop=4 shiftwidth=4
