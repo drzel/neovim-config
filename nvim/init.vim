@@ -123,6 +123,7 @@ Plug 'pbrisbin/vim-mkdir'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'ckarnell/history-traverse'
+Plug 'drzel/vim-scrolloff-fraction'
 
 " Search
 Plug 'romainl/vim-cool'
@@ -302,11 +303,11 @@ set noexpandtab
 set tabstop=4 shiftwidth=4
 set autoindent
 
-function! Title() abort
+function! PresentWorkingDirectory() abort
 	return fnamemodify(getcwd(), ':~')
 endfunction
 
-set titlestring=%{Title()}
+set titlestring=%{PresentWorkingDirectory()}
 
 
 " ========
@@ -376,8 +377,10 @@ nnoremap L :HisTravForward<CR>
 " =======
 
 " Show cursorline in insert mode
-autocmd vimrc InsertEnter * set cursorline
-autocmd vimrc InsertLeave * set nocursorline
+" autocmd vimrc InsertEnter * set cursorline
+" autocmd vimrc InsertLeave * set nocursorline
+
+set cursorline
 
 
 " =====
