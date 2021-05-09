@@ -125,6 +125,10 @@ Plug 'junegunn/fzf.vim'
 Plug 'ckarnell/history-traverse'
 Plug 'drzel/vim-scrolloff-fraction'
 
+" Plug 'junegunn/fzf.vim' "requirement from benwainwright/fzf-project
+" Plug 'tpope/vim-fugitive' "requirement from benwainwright/fzf-project
+Plug 'benwainwright/fzf-project'
+
 " Search
 Plug 'romainl/vim-cool'
 
@@ -146,6 +150,11 @@ call plug#end()
 " ===============
 " Plugin settings
 " ===============
+
+" fzf-project
+let g:fzfSwitchProjectWorkspaces = ['~/Workspace']
+let g:fzfSwitchProjectProjectDepth = 3
+let g:fzfSwitchProjectAlwaysChooseFile = 0
 
 " fzf
 let g:fzf_preview_window = ''
@@ -344,6 +353,7 @@ nnoremap <leader>ft :Tags<CR>
 nnoremap <leader>fT :BTags<CR>
 nnoremap <leader>fh :History<CR>
 nnoremap <leader>fr :Rg<CR>
+nnoremap <leader>fp :FzfSwitchProject<CR>
 
 " vim-grepper
 nnoremap <leader>gg :Grepper -tool rg -grepprg rg -H --no-heading --vimgrep --smart-case -e<CR>
