@@ -390,7 +390,12 @@ nnoremap L :HisTravForward<CR>
 " autocmd vimrc InsertEnter * set cursorline
 " autocmd vimrc InsertLeave * set nocursorline
 
-set cursorline
+" Only show cursorline on active window
+augroup CursorLineOnlyInActiveWindow
+  autocmd!
+  autocmd VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+  autocmd WinLeave * setlocal nocursorline
+augroup END
 
 
 " =====
