@@ -323,6 +323,9 @@ nnoremap <leader>s :set spell!<CR>
 " Copy filename
 nnoremap <leader>yf :let @" = @%<CR>
 
+" Close all background buffers
+nnoremap <leader>x :execute '%bdelete\|edit #\|normal `"'\|bdelete#<CR>
+
 
 " ===============
 " Plugin Key Maps
