@@ -154,7 +154,7 @@ call plug#end()
 " fzf-project
 let g:fzfSwitchProjectWorkspaces = ['~/Workspace']
 let g:fzfSwitchProjectProjectDepth = 3
-let g:fzfSwitchProjectAlwaysChooseFile = 0
+let g:fzfSwitchProjectAlwaysChooseFile = 1
 
 " fzf
 let g:fzf_preview_window = ''
