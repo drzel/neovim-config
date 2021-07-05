@@ -139,7 +139,7 @@ Plug 'drzel/vim-line-no-indicator'
 Plug 'ludovicchabant/vim-gutentags'
 
 " Indent guides
-Plug 'Yggdroot/indentLine'
+Plug 'lukas-reineke/indent-blankline.nvim'
 
 " Cosmetic (devicons must load last)
 Plug 'ryanoasis/vim-devicons'
@@ -280,9 +280,8 @@ let g:history_max_len = 1000
 " vim-table-mode
 let g:table_mode_corner='|'
 
-" indentLine
-let g:indentLine_char = '▏'
-let g:indentLine_enabled = 0
+" indent-blankline
+let g:indent_blankline_char = '▏'
 
 
 " ============
@@ -367,7 +366,7 @@ xnoremap ga <Plug>(EasyAlign)
 nnoremap ga <Plug>(EasyAlign)
 
 " indentLine
-nnoremap <leader>i :IndentLinesToggle<CR>
+nnoremap <leader>i :IndentBlanklineToggle<CR>
 
 
 " ===================
