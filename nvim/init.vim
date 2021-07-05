@@ -24,10 +24,8 @@ scriptencoding utf-8
 
 call plug#begin(stdpath('data') . '/plugged')
 
-" Linting
-
-" Autocomplete
-Plug 'ajh17/VimCompletesMe'
+" LSP
+Plug 'neovim/nvim-lspconfig'
 
 " Keymappings
 Plug 'tpope/vim-unimpaired'
@@ -397,3 +395,9 @@ autocmd vimrc ColorScheme * highlight SignifySignAdd guibg=bg
 autocmd vimrc ColorScheme * highlight SignifySignChange guibg=bg
 autocmd vimrc ColorScheme * highlight SignifySignDelete guibg=bg
 autocmd vimrc ColorScheme * highlight SignifySignDeleteFirstLine guibg=bg
+
+" LSP
+
+lua << EOF
+require'lspconfig'.solargraph.setup{}
+EOF
