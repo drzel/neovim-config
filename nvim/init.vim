@@ -262,6 +262,8 @@ let g:table_mode_corner='|'
 
 " indent-blankline
 let g:indent_blankline_char = '▏'
+let g:indent_blankline_show_trailing_blankline_indent = v:false
+set colorcolumn=1000 " Workaround until https://github.com/neovim/neovim/issues/14209 is fixed
 
 
 " ============
