@@ -7,7 +7,7 @@
 "       ```
 " - Use rbenv plugin to Automatically generate ctags for rbenv Ruby stdlibs:
 "     https://github.com/tpope/rbenv-ctags
-" - Use :CheckHealth to ensure dependencies installed
+" - Use :checkhealth to ensure dependencies installed
 " - :PlugInstall
 " - Restart vim
 
@@ -98,6 +98,7 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 " Colorschemes
 Plug 'morhetz/gruvbox'
 Plug 'shinchu/lightline-gruvbox.vim'
+Plug 'arcticicestudio/nord-vim'
 
 " Text objects
 Plug 'wellle/targets.vim'
@@ -208,7 +209,7 @@ function! LightLineReadonly() abort
 endfunction
 
 let g:lightline = {
-			\   'colorscheme': 'gruvbox',
+			\   'colorscheme': 'nord',
 			\   'separator': { 'left': '', 'right': '' },
 			\   'subseparator': { 'left': '|', 'right': '|' },
 			\   'component_function': {
@@ -391,8 +392,8 @@ nnoremap L :HisTravForward<CR>
 " =======
 
 " Show cursorline in insert mode
-" autocmd vimrc InsertEnter * set cursorline
-" autocmd vimrc InsertLeave * set nocursorline
+autocmd vimrc InsertEnter * set cursorline
+autocmd vimrc InsertLeave * set nocursorline
 
 " Only show cursorline on active window
 augroup CursorLineOnlyInActiveWindow
@@ -411,12 +412,12 @@ set termguicolors
 
 " Colorscheme
 set background=dark
-autocmd vimrc VimEnter * ++nested colorscheme gruvbox
+autocmd vimrc VimEnter * ++nested colorscheme nord
 
 " Colorscheme overrides
-autocmd vimrc ColorScheme * highlight VertSplit guibg=bg
-autocmd vimrc ColorScheme * highlight SignColumn guibg=bg
-autocmd vimrc ColorScheme * highlight SignifySignAdd guibg=bg
-autocmd vimrc ColorScheme * highlight SignifySignChange guibg=bg
-autocmd vimrc ColorScheme * highlight SignifySignDelete guibg=bg
-autocmd vimrc ColorScheme * highlight SignifySignDeleteFirstLine guibg=bg
+" autocmd vimrc ColorScheme * highlight VertSplit guibg=bg
+" autocmd vimrc ColorScheme * highlight SignColumn guibg=bg
+" autocmd vimrc ColorScheme * highlight SignifySignAdd guibg=bg
+" autocmd vimrc ColorScheme * highlight SignifySignChange guibg=bg
+" autocmd vimrc ColorScheme * highlight SignifySignDelete guibg=bg
+" autocmd vimrc ColorScheme * highlight SignifySignDeleteFirstLine guibg=bg
