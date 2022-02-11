@@ -1,0 +1,3 @@
+- install vim-plug
+- install node
+- install yarn
