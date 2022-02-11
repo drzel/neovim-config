@@ -107,6 +107,7 @@ Plug 'jeetsukumaran/vim-indentwise'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-ragtag'
 Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-sleuth'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'drzel/vim-split-line'
 Plug 'junegunn/goyo.vim'
@@ -127,7 +128,7 @@ Plug 'drzel/vim-scrolloff-fraction'
 
 " Plug 'junegunn/fzf.vim' "requirement from benwainwright/fzf-project
 " Plug 'tpope/vim-fugitive' "requirement from benwainwright/fzf-project
-Plug 'benwainwright/fzf-project'
+" Plug 'benwainwright/fzf-project'
 
 " Search
 Plug 'romainl/vim-cool'
@@ -151,10 +152,10 @@ call plug#end()
 " Plugin settings
 " ===============
 
-" fzf-project
-let g:fzfSwitchProjectWorkspaces = ['~/Workspace']
-let g:fzfSwitchProjectProjectDepth = 3
-let g:fzfSwitchProjectAlwaysChooseFile = 1
+" " fzf-project
+" let g:fzfSwitchProjectWorkspaces = ['~/Workspace']
+" let g:fzfSwitchProjectProjectDepth = 3
+" let g:fzfSwitchProjectAlwaysChooseFile = 1
 
 " fzf
 let g:fzf_preview_window = ''
@@ -357,7 +358,7 @@ nnoremap <leader>ft :Tags<CR>
 nnoremap <leader>fT :BTags<CR>
 nnoremap <leader>fh :History<CR>
 nnoremap <leader>fr :Rg<CR>
-nnoremap <leader>fp :FzfSwitchProject<CR>
+" nnoremap <leader>fp :FzfSwitchProject<CR>
 
 " vim-grepper
 nnoremap <leader>gg :Grepper -tool rg -grepprg rg -H --no-heading --vimgrep --smart-case -e<CR>
