@@ -87,6 +87,7 @@ Plug 'tpope/vim-git'
 Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-rhubarb'
+Plug 'drzel/vim-repo-edit'
 
 " Alignment
 Plug 'junegunn/vim-easy-align'
@@ -126,10 +127,6 @@ Plug 'junegunn/fzf.vim'
 Plug 'ckarnell/history-traverse'
 Plug 'drzel/vim-scrolloff-fraction'
 
-" Plug 'junegunn/fzf.vim' "requirement from benwainwright/fzf-project
-" Plug 'tpope/vim-fugitive' "requirement from benwainwright/fzf-project
-Plug 'benwainwright/fzf-project'
-
 " Search
 Plug 'romainl/vim-cool'
 
@@ -151,11 +148,6 @@ call plug#end()
 " ===============
 " Plugin settings
 " ===============
-
-" fzf-project
-let g:fzfSwitchProjectWorkspaces = ['~/Workspace']
-let g:fzfSwitchProjectProjectDepth = 3
-let g:fzfSwitchProjectAlwaysChooseFile = 1
 
 " fzf
 let g:fzf_preview_window = ''
@@ -308,11 +300,11 @@ set splitright
 set wildmode=longest,list,full
 set wildmenu
 set fillchars+=vert:│
-set sidescrolloff=20
 
 set noexpandtab
 set tabstop=4 shiftwidth=4
 set autoindent
+set nocursorline
 
 function! PresentWorkingDirectory() abort
 	return fnamemodify(getcwd(), ':~')
@@ -358,7 +350,6 @@ nnoremap <leader>ft :Tags<CR>
 nnoremap <leader>fT :BTags<CR>
 nnoremap <leader>fh :History<CR>
 nnoremap <leader>fr :Rg<CR>
-nnoremap <leader>fp :FzfSwitchProject<CR>
 
 " vim-grepper
 nnoremap <leader>gg :Grepper -tool rg -grepprg rg -H --no-heading --vimgrep --smart-case -e<CR>
@@ -371,6 +362,9 @@ nnoremap ga <Plug>(EasyAlign)
 " indentLine
 nnoremap <leader>i :IndentBlanklineToggle<CR>
 
+" vim-ragtag
+inoremap <M-o>       <Esc>o
+let g:ragtag_global_maps = 1
 
 " ===================
 " Overriding Key Maps
@@ -397,9 +391,9 @@ autocmd vimrc InsertLeave * set nocursorline
 
 " Only show cursorline on active window
 augroup CursorLineOnlyInActiveWindow
-  autocmd!
-  autocmd VimEnter,WinEnter,BufWinEnter * setlocal cursorline
-  autocmd WinLeave * setlocal nocursorline
+	autocmd!
+	autocmd VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+	autocmd WinLeave * setlocal nocursorline
 augroup END
 
 
