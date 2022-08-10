@@ -24,6 +24,12 @@ scriptencoding utf-8
 
 call plug#begin(stdpath('data') . '/plugged')
 
+" Mine
+Plug 'drzel/vim-scroll-in-place'
+Plug 'drzel/vim-repo-edit'
+Plug 'drzel/vim-split-line'
+Plug 'drzel/vim-scrolloff-fraction'
+
 " Linting
 Plug 'w0rp/ale'
 
@@ -33,7 +39,6 @@ Plug 'ajh17/VimCompletesMe'
 " Keymappings
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-rsi'
-Plug 'drzel/vim-scroll-in-place'
 
 " Utilities
 Plug 'tpope/vim-dispatch'
@@ -66,6 +71,7 @@ Plug 'FortressOne/quakec.vim'
 
 " Javascript
 Plug 'pangloss/vim-javascript'
+Plug 'briancollins/vim-jst'
 Plug 'yuezk/vim-js'
 Plug 'maxmellon/vim-jsx-pretty'
 
@@ -87,7 +93,6 @@ Plug 'tpope/vim-git'
 Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-rhubarb'
-Plug 'drzel/vim-repo-edit'
 
 " Alignment
 Plug 'junegunn/vim-easy-align'
@@ -111,7 +116,6 @@ Plug 'tpope/vim-ragtag'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-sleuth'
 Plug 'AndrewRadev/splitjoin.vim'
-Plug 'drzel/vim-split-line'
 Plug 'junegunn/goyo.vim'
 
 " Colorizer
@@ -126,13 +130,12 @@ Plug 'pbrisbin/vim-mkdir'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'ckarnell/history-traverse'
-Plug 'drzel/vim-scrolloff-fraction'
 
 " Search
 Plug 'romainl/vim-cool'
 
-" vim-line-no-indicator
-Plug 'drzel/vim-line-no-indicator'
+" Scrollbar
+" Plug 'dstein64/nvim-scrollview', { 'branch': 'main' }
 
 " Tags
 Plug 'ludovicchabant/vim-gutentags'
@@ -207,8 +210,7 @@ let g:lightline = {
 			\   'subseparator': { 'left': '|', 'right': '|' },
 			\   'component_function': {
 			\     'fugitive_statusline': 'GitBranch',
-			\     'll_filestatus': 'LightLineFileStatus',
-			\     'line_no_indicator': 'LineNoIndicator'
+			\     'll_filestatus': 'LightLineFileStatus'
 			\   },
 			\   'component_expand': {
 			\     'linter_checking': 'lightline#ale#checking',
@@ -226,7 +228,7 @@ let g:lightline = {
 			\   },
 			\   'active': {
 			\     'left': [['mode', 'paste'], ['fugitive_statusline'], ['ll_filestatus']],
-			\     'right': [[ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_ok' ], ['lineinfo'], ['line_no_indicator']]
+			\     'right': [[ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_ok' ], ['lineinfo']]
 			\   },
 			\   'inactive': {
 			\     'left': [['ll_filestatus']],
@@ -301,6 +303,7 @@ set splitright
 set wildmode=longest,list,full
 set wildmenu
 set fillchars+=vert:│
+" set clipboard=unnamedplus
 
 set noexpandtab
 set tabstop=4 shiftwidth=4
@@ -318,6 +321,9 @@ set titlestring=%{PresentWorkingDirectory()}
 " Key maps
 " ========
 
+" Edit .plan
+nnoremap <leader>p :edit ~/.plan<CR>
+
 " Edit vimrc
 nnoremap <leader>c :edit $MYVIMRC<CR>
 
@@ -330,6 +336,12 @@ nnoremap <leader>yf :let @" = @%<CR>
 " Close all background buffers
 nnoremap <leader>x :execute '%bdelete\|edit #\|normal `"'\|bdelete#<CR>
 
+" Yank filename to unnamed register
+nmap <leader>yf :let @+=expand("%")<CR>
+nmap <leader>yF :let @+=expand("%:p")<CR>
+
+" cd to Workspace
+nnoremap <leader>ww :cd ~/Workspace/<CR>
 
 " ===============
 " Plugin Key Maps
