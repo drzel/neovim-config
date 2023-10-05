@@ -34,7 +34,7 @@ Plug 'drzel/vim-scrolloff-fraction'
 Plug 'w0rp/ale'
 
 " Autocomplete
-Plug 'ajh17/VimCompletesMe'
+" Plug 'ajh17/VimCompletesMe'
 
 " Keymappings
 Plug 'tpope/vim-unimpaired'
